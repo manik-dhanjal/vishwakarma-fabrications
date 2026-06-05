@@ -1,5 +1,5 @@
 /**
- * Gatsby configuration — Vishwakarma Fabrications
+ * Gatsby configuration  Vishwakarma Fabrications
  * Site-wide metadata lives here AND in src/data/site.js (single source for
  * contact details used by components). Keep the two phone/address values in sync.
  */

@@ -7,14 +7,21 @@ import site from "../data/site";
    once real photos exist. `label` describes what belongs here. */
 export function Placeholder({ label, height = 120, shutter = false, style }) {
   return (
-    <div className={`ph${shutter ? " ph--shutter" : ""}`} style={{ height, ...style }}>
+    <div
+      className={`ph${shutter ? " ph--shutter" : ""}`}
+      style={{ height, ...style }}
+    >
       {label && !shutter && <span className="ph__tag">{label}</span>}
     </div>
   );
 }
 
 export function Stars({ count = 5 }) {
-  return <div className="review__stars" aria-label={`${count} star rating`}>{"★".repeat(count)}</div>;
+  return (
+    <div className="review__stars" aria-label={`${count} star rating`}>
+      {"★".repeat(count)}
+    </div>
+  );
 }
 
 export function SectionTitle({ kicker, title }) {
@@ -57,7 +64,7 @@ export function ReviewCard({ review }) {
     <div className="review">
       <Stars count={review.stars} />
       <p className="review__quote">{review.quote}</p>
-      <div className="review__name">— {review.area}</div>
+      <div className="review__name"> {review.area}</div>
     </div>
   );
 }
@@ -66,7 +73,9 @@ export function CtaBand({ title, cta = "☎ " + site.phoneDisplay }) {
   return (
     <div className="ctaband">
       <h2 className="h2">{title}</h2>
-      <a className="btn btn--amber" href={site.phoneHref}>{cta}</a>
+      <a className="btn btn--amber" href={site.phoneHref}>
+        {cta}
+      </a>
     </div>
   );
 }

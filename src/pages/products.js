@@ -4,27 +4,43 @@ import Seo from "../components/seo";
 import { ProductCard, CtaBand } from "../components/ui";
 import products from "../data/products.json";
 
-const CATEGORIES = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
+const CATEGORIES = [
+  "All",
+  ...Array.from(new Set(products.map((p) => p.category))),
+];
 
 export default function ProductsPage() {
   const [filter, setFilter] = useState("All");
   const shown = useMemo(
-    () => (filter === "All" ? products : products.filter((p) => p.category === filter)),
-    [filter]
+    () =>
+      filter === "All"
+        ? products
+        : products.filter((p) => p.category === filter),
+    [filter],
   );
 
   return (
     <Layout>
-      <Seo title="Products — Rolling Shutters, Gates & Fabrication" pathname="/products/" />
+      <Seo
+        title="Products  Rolling Shutters, Gates & Fabrication"
+        pathname="/products/"
+      />
       <section className="section">
         <div className="container">
-          <h1 className="h1" style={{ fontSize: "clamp(28px,4vw,40px)" }}>Our Products</h1>
+          <h1 className="h1" style={{ fontSize: "clamp(28px,4vw,40px)" }}>
+            Our Products
+          </h1>
           <p className="lead" style={{ marginTop: 12 }}>
-            All types of rolling shutters, gates and steel fabrication — every job
-            custom-built to your opening. Can't see what you need? We build custom.
+            All types of rolling shutters, gates and steel fabrication every job
+            custom-built to your opening. Can't see what you need? We build
+            custom.
           </p>
 
-          <div className="chips chips--scroll" style={{ margin: "20px 0 28px" }} role="tablist">
+          <div
+            className="chips chips--scroll"
+            style={{ margin: "20px 0 28px" }}
+            role="tablist"
+          >
             {CATEGORIES.map((c) => (
               <button
                 key={c}
@@ -38,7 +54,9 @@ export default function ProductsPage() {
           </div>
 
           <div className="grid grid--3">
-            {shown.map((p) => <ProductCard key={p.slug} product={p} />)}
+            {shown.map((p) => (
+              <ProductCard key={p.slug} product={p} />
+            ))}
           </div>
         </div>
       </section>

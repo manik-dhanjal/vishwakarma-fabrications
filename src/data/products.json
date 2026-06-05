@@ -12,7 +12,11 @@
       "Finish": "Powder-coat, any colour"
     },
     "options": ["Gear operated", "Pull & push", "Key lock", "Wicket door"],
-    "related": ["motorised-remote-shutters", "perforated-grill-shutters", "collapsible-sliding-gates"]
+    "related": [
+      "motorised-remote-shutters",
+      "perforated-grill-shutters",
+      "collapsible-sliding-gates"
+    ]
   },
   {
     "slug": "motorised-remote-shutters",
@@ -26,14 +30,23 @@
       "Motor": "0.5 – 2.0 HP",
       "Finish": "Powder-coat, any colour"
     },
-    "options": ["Remote control", "Wall switch", "Manual override", "Group control"],
-    "related": ["manual-rolling-shutters", "perforated-grill-shutters", "collapsible-sliding-gates"]
+    "options": [
+      "Remote control",
+      "Wall switch",
+      "Manual override",
+      "Group control"
+    ],
+    "related": [
+      "manual-rolling-shutters",
+      "perforated-grill-shutters",
+      "collapsible-sliding-gates"
+    ]
   },
   {
     "slug": "perforated-grill-shutters",
     "name": "Perforated & Grill Shutters",
     "category": "Perforated",
-    "summary": "See-through security for showrooms and malls — light and visibility with protection.",
+    "summary": "See-through security for showrooms and malls  light and visibility with protection.",
     "description": "Perforated and grill shutters keep your products visible and the space ventilated while staying locked and secure after hours. Popular for showrooms, malls and display fronts where customers should see in but nobody can get in.",
     "specs": {
       "Width": "up to 14'-0\"",
@@ -42,7 +55,11 @@
       "Finish": "Powder-coat / galvanised"
     },
     "options": ["Full grill", "Perforated sheet", "Polycarbonate", "Motorised"],
-    "related": ["motorised-remote-shutters", "manual-rolling-shutters", "collapsible-sliding-gates"]
+    "related": [
+      "motorised-remote-shutters",
+      "manual-rolling-shutters",
+      "collapsible-sliding-gates"
+    ]
   },
   {
     "slug": "collapsible-sliding-gates",
@@ -56,37 +73,64 @@
       "Operation": "Manual / motorised",
       "Finish": "Primer / powder-coat"
     },
-    "options": ["Collapsible channel gate", "Sliding gate", "Motorised sliding", "Wicket gate"],
-    "related": ["manual-rolling-shutters", "steel-fabrication", "perforated-grill-shutters"]
+    "options": [
+      "Collapsible channel gate",
+      "Sliding gate",
+      "Motorised sliding",
+      "Wicket gate"
+    ],
+    "related": [
+      "manual-rolling-shutters",
+      "steel-fabrication",
+      "perforated-grill-shutters"
+    ]
   },
   {
     "slug": "steel-fabrication",
     "name": "Steel Fabrication",
     "category": "Fabrication",
     "summary": "MS doors, windows, railings, gratings and custom structural work.",
-    "description": "Beyond shutters, our workshop takes on general steel fabrication — MS doors and windows, railings, gratings, sheds and custom structural jobs. CNC cutting and skilled welding mean clean, accurate work sized to your drawings or site.",
+    "description": "Beyond shutters, our workshop takes on general steel fabrication  MS doors and windows, railings, gratings, sheds and custom structural jobs. CNC cutting and skilled welding mean clean, accurate work sized to your drawings or site.",
     "specs": {
       "Scope": "Doors, windows, railings, gratings, sheds",
       "Cutting": "CNC plasma / shear",
       "Joining": "MIG / arc welding",
       "Finish": "Primer / powder-coat"
     },
-    "options": ["MS doors & windows", "Railings", "Gratings", "Custom structural"],
-    "related": ["collapsible-sliding-gates", "manual-rolling-shutters", "repair-maintenance"]
+    "options": [
+      "MS doors & windows",
+      "Railings",
+      "Gratings",
+      "Custom structural"
+    ],
+    "related": [
+      "collapsible-sliding-gates",
+      "manual-rolling-shutters",
+      "repair-maintenance"
+    ]
   },
   {
     "slug": "repair-maintenance",
     "name": "Repair & Maintenance",
     "category": "Repair",
     "summary": "Fast repair and servicing for shutters of any make.",
-    "description": "Stuck, noisy or damaged shutter? We repair and service rolling shutters of any make — springs, motors, guides, slats and locks — and offer annual maintenance so your shutter keeps rolling smoothly for years.",
+    "description": "Stuck, noisy or damaged shutter? We repair and service rolling shutters of any make  springs, motors, guides, slats and locks  and offer annual maintenance so your shutter keeps rolling smoothly for years.",
     "specs": {
       "Service": "Springs, motors, guides, slats, locks",
       "Brands": "Any make",
       "Response": "Local, same-week",
       "Plans": "One-time or annual AMC"
     },
-    "options": ["Spring replacement", "Motor repair", "Slat replacement", "Annual maintenance"],
-    "related": ["motorised-remote-shutters", "manual-rolling-shutters", "steel-fabrication"]
+    "options": [
+      "Spring replacement",
+      "Motor repair",
+      "Slat replacement",
+      "Annual maintenance"
+    ],
+    "related": [
+      "motorised-remote-shutters",
+      "manual-rolling-shutters",
+      "steel-fabrication"
+    ]
   }
 ]

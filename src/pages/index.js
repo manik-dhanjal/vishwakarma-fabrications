@@ -2,7 +2,14 @@ import React from "react";
 import { Link } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import { Placeholder, StatBar, ProductCard, ReviewCard, SectionTitle, CtaBand } from "../components/ui";
+import {
+  Placeholder,
+  StatBar,
+  ProductCard,
+  ReviewCard,
+  SectionTitle,
+  CtaBand,
+} from "../components/ui";
 import { Phone } from "../components/icons";
 import products from "../data/products.json";
 import reviews from "../data/reviews.json";
@@ -18,23 +25,35 @@ export default function HomePage() {
         <div className="container hero">
           <div className="hero__copy">
             <div className="eyebrow">{site.tagline} · U.P.</div>
-            <h1 className="h1">All types of rolling shutters, built to last.</h1>
+            <h1 className="h1">
+              All types of rolling shutters, built to last.
+            </h1>
             <p className="lead">
-              Manual, motorised, perforated &amp; grill shutters — custom-built to
+              Manual, motorised, perforated &amp; grill shutters custom-built to
               your exact opening and fitted by our own team in Amroha.
             </p>
             <div className="hero__cta">
-              <a className="btn btn--amber" href={site.phoneHref}><Phone size={16} /> Call for a quote</a>
-              <Link className="btn btn--outline" to="/products/">See products</Link>
+              <a className="btn btn--amber" href={site.phoneHref}>
+                <Phone size={16} /> Call for a quote
+              </a>
+              <Link className="btn btn--outline" to="/products/">
+                See products
+              </Link>
             </div>
           </div>
-          <Placeholder label="hero · finished shutter / shopfront" height={300} shutter />
+          <Placeholder
+            label="hero · finished shutter / shopfront"
+            height={300}
+            shutter
+          />
         </div>
       </section>
 
       {/* Stats */}
       <section className="section--tight">
-        <div className="container"><StatBar /></div>
+        <div className="container">
+          <StatBar />
+        </div>
       </section>
 
       {/* Products */}
@@ -42,7 +61,9 @@ export default function HomePage() {
         <div className="container">
           <SectionTitle kicker="What we make" title="Our products" />
           <div className="grid grid--3">
-            {products.map((p) => <ProductCard key={p.slug} product={p} />)}
+            {products.map((p) => (
+              <ProductCard key={p.slug} product={p} />
+            ))}
           </div>
         </div>
       </section>
@@ -50,9 +71,14 @@ export default function HomePage() {
       {/* Reviews */}
       <section className="section--tight">
         <div className="container">
-          <SectionTitle kicker="Customer reviews" title="Trusted by shops & factories" />
+          <SectionTitle
+            kicker="Customer reviews"
+            title="Trusted by shops & factories"
+          />
           <div className="grid grid--3">
-            {reviews.map((r, i) => <ReviewCard key={i} review={r} />)}
+            {reviews.map((r, i) => (
+              <ReviewCard key={i} review={r} />
+            ))}
           </div>
         </div>
       </section>

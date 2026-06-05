@@ -4,13 +4,19 @@ import { useStaticQuery, graphql } from "gatsby";
 import site from "../data/site";
 
 /**
- * SEO — page meta + LocalBusiness JSON-LD (critical for local search).
+ * SEO  page meta + LocalBusiness JSON-LD (critical for local search).
  */
 export default function Seo({ title, description, pathname }) {
   const { site: data } = useStaticQuery(graphql`
     query {
       site {
-        siteMetadata { title titleTemplate description siteUrl locale }
+        siteMetadata {
+          title
+          titleTemplate
+          description
+          siteUrl
+          locale
+        }
       }
     }
   `);

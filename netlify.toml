@@ -1,0 +1,15 @@
+# Netlify build settings for a Gatsby site.
+[build]
+  command = "gatsby build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# SPA-style fallback is not needed for Gatsby (it emits static HTML per route),
+# but this keeps direct deep links safe during client navigation.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"

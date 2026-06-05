@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vishwakarmafabrications.in/sitemap/sitemap-index.xml

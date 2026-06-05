@@ -1,0 +1,25 @@
+{
+  "name": "vishwakarma-fabrications",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marketing website for Vishwakarma Fabrications — rolling shutters & steel fabrication, Amroha.",
+  "author": "Vishwakarma Fabrications",
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^5.13.0",
+    "gatsby-plugin-react-helmet": "^6.13.0",
+    "gatsby-plugin-sitemap": "^6.13.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

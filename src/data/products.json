@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "manual-rolling-shutters",
+    "name": "Manual Rolling Shutters",
+    "category": "Manual",
+    "summary": "Gear-operated and pull-push shutters for shopfronts and small openings.",
+    "description": "Our manual rolling shutters are the dependable, economical choice for shops and small commercial openings. Built from high-grade MS sheet on a counter-balanced spring, they roll up smoothly by hand or gear and lock down solid. Sized exactly to your opening and finished in any colour.",
+    "specs": {
+      "Width": "up to 16'-0\"",
+      "Gauge": "18 / 20 / 22",
+      "Operation": "Gear / pull-push",
+      "Finish": "Powder-coat, any colour"
+    },
+    "options": ["Gear operated", "Pull & push", "Key lock", "Wicket door"],
+    "related": ["motorised-remote-shutters", "perforated-grill-shutters", "collapsible-sliding-gates"]
+  },
+  {
+    "slug": "motorised-remote-shutters",
+    "name": "Motorised & Remote Shutters",
+    "category": "Motorised",
+    "summary": "Tubular-motor shutters operated by remote, wall switch or app.",
+    "description": "Effortless, quiet operation for larger shopfronts, showrooms, godowns and industrial openings. A concealed tubular motor lifts the shutter at the press of a button, with remote, wall-switch and manual-override options. Ideal where the shutter is large, heavy, or used many times a day.",
+    "specs": {
+      "Width": "up to 14'-0\"",
+      "Gauge": "18 / 20 / 22",
+      "Motor": "0.5 – 2.0 HP",
+      "Finish": "Powder-coat, any colour"
+    },
+    "options": ["Remote control", "Wall switch", "Manual override", "Group control"],
+    "related": ["manual-rolling-shutters", "perforated-grill-shutters", "collapsible-sliding-gates"]
+  },
+  {
+    "slug": "perforated-grill-shutters",
+    "name": "Perforated & Grill Shutters",
+    "category": "Perforated",
+    "summary": "See-through security for showrooms and malls — light and visibility with protection.",
+    "description": "Perforated and grill shutters keep your products visible and the space ventilated while staying locked and secure after hours. Popular for showrooms, malls and display fronts where customers should see in but nobody can get in.",
+    "specs": {
+      "Width": "up to 14'-0\"",
+      "Type": "Perforated / grill / polycarbonate",
+      "Operation": "Manual or motorised",
+      "Finish": "Powder-coat / galvanised"
+    },
+    "options": ["Full grill", "Perforated sheet", "Polycarbonate", "Motorised"],
+    "related": ["motorised-remote-shutters", "manual-rolling-shutters", "collapsible-sliding-gates"]
+  },
+  {
+    "slug": "collapsible-sliding-gates",
+    "name": "Collapsible & Sliding Gates",
+    "category": "Gates",
+    "summary": "Channel-type collapsible gates and sliding gates for extra security.",
+    "description": "Heavy-duty collapsible and sliding gates add a second line of defence to shopfronts, godowns and industrial gates. Fabricated from solid MS channels and pickets, they fold or slide clear when open and lock rigid when closed.",
+    "specs": {
+      "Type": "Collapsible / sliding",
+      "Material": "MS channel & pickets",
+      "Operation": "Manual / motorised",
+      "Finish": "Primer / powder-coat"
+    },
+    "options": ["Collapsible channel gate", "Sliding gate", "Motorised sliding", "Wicket gate"],
+    "related": ["manual-rolling-shutters", "steel-fabrication", "perforated-grill-shutters"]
+  },
+  {
+    "slug": "steel-fabrication",
+    "name": "Steel Fabrication",
+    "category": "Fabrication",
+    "summary": "MS doors, windows, railings, gratings and custom structural work.",
+    "description": "Beyond shutters, our workshop takes on general steel fabrication — MS doors and windows, railings, gratings, sheds and custom structural jobs. CNC cutting and skilled welding mean clean, accurate work sized to your drawings or site.",
+    "specs": {
+      "Scope": "Doors, windows, railings, gratings, sheds",
+      "Cutting": "CNC plasma / shear",
+      "Joining": "MIG / arc welding",
+      "Finish": "Primer / powder-coat"
+    },
+    "options": ["MS doors & windows", "Railings", "Gratings", "Custom structural"],
+    "related": ["collapsible-sliding-gates", "manual-rolling-shutters", "repair-maintenance"]
+  },
+  {
+    "slug": "repair-maintenance",
+    "name": "Repair & Maintenance",
+    "category": "Repair",
+    "summary": "Fast repair and servicing for shutters of any make.",
+    "description": "Stuck, noisy or damaged shutter? We repair and service rolling shutters of any make — springs, motors, guides, slats and locks — and offer annual maintenance so your shutter keeps rolling smoothly for years.",
+    "specs": {
+      "Service": "Springs, motors, guides, slats, locks",
+      "Brands": "Any make",
+      "Response": "Local, same-week",
+      "Plans": "One-time or annual AMC"
+    },
+    "options": ["Spring replacement", "Motor repair", "Slat replacement", "Annual maintenance"],
+    "related": ["motorised-remote-shutters", "manual-rolling-shutters", "steel-fabrication"]
+  }
+]

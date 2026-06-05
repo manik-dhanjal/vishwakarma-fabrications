@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Responsive Wireframes — Vishwakarma Fabrications (Product-led)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@500;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#2b2b2b;--ink-soft:#5c5c5c;--line:#3a3a3a;--line-soft:#9a9a9a;
+    --paper:#f4f1ea;--card:#fbfaf6;--accent:#d9772f;--accent-soft:#f0d9c4;
+    --shade:#e7e3d9;--hand:'Patrick Hand',cursive;--note:'Caveat',cursive;--alt:'Kalam',cursive;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:var(--hand);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased;}
+
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:50;background:#1f1d1a;color:#f4f1ea;border-bottom:3px solid var(--accent);padding:10px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .brand{font-family:var(--note);font-weight:700;font-size:23px;display:flex;align-items:center;gap:10px;}
+  .brand .dot{width:12px;height:12px;background:var(--accent);border-radius:50%;}
+  .sub{font-family:var(--note);font-size:17px;color:#c9c4ba;}
+  .tabs{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto;}
+  .tab{font-family:var(--hand);font-size:14px;background:transparent;color:#d8d3c8;border:2px solid #54504a;border-radius:140px 16px 150px 16px/16px 150px 16px 140px;padding:5px 13px;cursor:pointer;transition:.15s;}
+  .tab:hover{border-color:var(--accent);color:#fff;}
+  .tab.active{background:var(--accent);border-color:var(--accent);color:#1f1d1a;font-weight:bold;}
+  .legend{display:flex;gap:20px;flex-wrap:wrap;align-items:center;padding:7px 22px;background:#2b2824;color:#b9b4aa;font-family:var(--note);font-size:15px;border-bottom:1px solid #3a3631;}
+  .swatch{width:14px;height:14px;border-radius:3px;display:inline-block;border:1px solid #555;vertical-align:-2px;margin-right:6px;}
+
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .scroll{max-width:1120px;margin:0 auto;padding:24px 22px 90px;}
+  .scroll{background-image:linear-gradient(rgba(0,0,0,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.035) 1px,transparent 1px);background-size:26px 26px;}
+
+  .phead{display:flex;align-items:flex-start;gap:14px;margin:4px 0 22px;flex-wrap:wrap;}
+  .ptag{font-family:var(--note);font-weight:700;font-size:27px;color:var(--accent);background:#fff;border:2.5px solid var(--line);padding:2px 15px;border-radius:150px 16px 150px 16px/16px 150px 16px 150px;transform:rotate(-1.2deg);box-shadow:3px 3px 0 rgba(0,0,0,.12);white-space:nowrap;}
+  .pdesc{font-family:var(--note);font-size:18px;color:var(--ink-soft);line-height:1.35;padding-top:4px;max-width:680px;}
+
+  /* device caption */
+  .dcap{font-family:var(--note);font-size:18px;color:var(--ink-soft);margin:18px 0 8px;display:flex;align-items:center;gap:8px;}
+  .dcap b{color:var(--ink);}
+  .dcap .px{font-family:'Courier New',monospace;font-size:12px;color:#8a857b;background:#fff;border:1.5px solid #d8d3c8;padding:1px 7px;border-radius:5px;}
+
+  .devrow{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;}
+  .device{background:var(--card);border:2.5px solid var(--line);box-shadow:6px 7px 0 rgba(0,0,0,.10);overflow:hidden;}
+  .device.desktop{width:100%;border-radius:12px;}
+  .device.tablet{width:540px;max-width:100%;border-radius:16px;}
+  .device.mobile{width:330px;max-width:100%;border-radius:26px;position:relative;}
+  .device.mobile .notch{height:22px;background:#ece7dd;display:flex;align-items:center;justify-content:center;gap:6px;border-bottom:1px solid #ddd;}
+  .device.mobile .notch i{width:34px;height:5px;background:#bdb8ad;border-radius:4px;}
+
+  /* browser bar */
+  .bbar{display:flex;align-items:center;gap:7px;padding:7px 11px;background:#ece7dd;border-bottom:2px solid var(--line);}
+  .bbar i{width:9px;height:9px;border-radius:50%;background:#cfc9bd;border:1.5px solid #999;}
+  .bbar .u{flex:1;margin-left:6px;background:#fff;border:1.5px solid #bbb;border-radius:18px;font-family:var(--note);font-size:12px;color:#888;padding:1px 10px;}
+
+  /* logo: shutter mark */
+  .mk{width:30px;height:30px;flex:0 0 auto;background:#2b2824;border-radius:7px;display:flex;align-items:flex-end;justify-content:center;padding:5px;position:relative;}
+  .mk .sl{width:100%;height:60%;background:repeating-linear-gradient(180deg,var(--accent) 0 3px,transparent 3px 5px);border-radius:2px;}
+  .mk .rl{position:absolute;left:5px;right:5px;bottom:5px;height:2px;background:#f4f1ea;border-radius:2px;}
+  .mk.lg{width:42px;height:42px;border-radius:10px;padding:7px;}
+  .logo{display:flex;align-items:center;gap:9px;font-family:var(--alt);font-weight:700;font-size:16px;line-height:1;}
+  .logo small{display:block;font-family:var(--note);font-size:11px;color:var(--ink-soft);font-weight:400;}
+  .logo .amp{color:var(--accent);}
+
+  /* nav */
+  .nav{display:flex;align-items:center;gap:16px;padding:13px 20px;border-bottom:2px dashed var(--line-soft);}
+  .nav .links{display:flex;gap:15px;margin-left:14px;color:var(--ink-soft);font-size:14px;flex-wrap:wrap;}
+  .nav .links span.on{color:var(--ink);border-bottom:2px solid var(--accent);}
+  .nav.compact .links{gap:11px;font-size:13px;}
+  .ham{font-size:20px;line-height:1;color:var(--ink);}
+  .phone{margin-left:auto;display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#1f1d1a;font-weight:700;border:2px solid var(--line);padding:6px 13px;font-size:14px;border-radius:140px 14px 140px 14px/14px 140px 14px 140px;box-shadow:2px 2px 0 rgba(0,0,0,.2);}
+  .phone.icon{padding:6px 9px;}
+
+  /* primitives */
+  .pad{padding:20px;}
+  .center{text-align:center;}
+  .row{display:flex;gap:14px;}
+  .col{flex:1;}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--hand);font-size:15px;border:2px solid var(--line);padding:8px 15px;border-radius:150px 14px 150px 14px/14px 150px 14px 150px;background:#fff;}
+  .btn.fill{background:var(--accent);color:#1f1d1a;font-weight:700;box-shadow:3px 3px 0 rgba(0,0,0,.18);}
+  .btn.full{width:100%;justify-content:center;}
+  h1,h2,h3{margin:0;font-weight:400;}
+  .h-xl{font-size:34px;line-height:1.08;} .h-l{font-size:26px;line-height:1.12;} .h-m{font-size:20px;}
+  .device.mobile .h-xl{font-size:26px;} .device.tablet .h-xl{font-size:28px;}
+  .eyebrow{font-family:var(--note);font-size:16px;color:var(--accent);font-weight:700;}
+  .sec-label{font-family:var(--note);font-size:15px;color:var(--line-soft);border-left:3px solid var(--accent);padding-left:8px;margin:22px 0 11px;text-transform:uppercase;letter-spacing:1px;}
+
+  .ph{position:relative;border:2px solid var(--line-soft);border-radius:7px;background:repeating-linear-gradient(45deg,#e8e4da,#e8e4da 10px,#f3f0e8 10px,#f3f0e8 20px);display:flex;align-items:center;justify-content:center;color:#7a756b;}
+  .ph .tag{font-family:'Courier New',monospace;font-size:11px;background:#fff;border:1.5px solid #b9b4aa;padding:2px 7px;border-radius:5px;color:#6b665d;}
+  .shutter{background:repeating-linear-gradient(180deg,#dfdbd1 0 8px,#cfcabf 8px 10px);border:2.5px solid var(--line);border-radius:6px;position:relative;}
+  .shutter::after{content:"";position:absolute;left:8%;right:8%;bottom:6px;height:5px;background:#b6b1a6;border-radius:3px;}
+
+  .lines{display:flex;flex-direction:column;gap:6px;}
+  .ln{height:8px;background:#dfdbd1;border-radius:5px;}
+  .ln.s{width:40%;}.ln.m{width:65%;}.ln.l{width:88%;}.ln.f{width:100%;}
+  .note{font-family:var(--note);font-size:16px;color:var(--accent);display:flex;align-items:flex-start;gap:6px;line-height:1.2;margin-top:8px;}
+  .note::before{content:"✎";font-size:13px;opacity:.8;}
+  .note.flat::before{content:"";}
+  .callout{font-family:var(--note);font-size:15px;color:#7a4a1f;background:#fbeede;border:2px dashed var(--accent);border-radius:9px;padding:6px 11px;display:inline-block;transform:rotate(-.5deg);}
+
+  .stats{display:flex;gap:10px;flex-wrap:wrap;}
+  .stat{flex:1;min-width:90px;border:2px solid var(--line);background:#fff;border-radius:10px;padding:10px;text-align:center;}
+  .stat b{display:block;font-family:var(--alt);font-weight:700;font-size:22px;}
+  .stat span{font-family:var(--note);font-size:13px;color:var(--ink-soft);}
+
+  .grid{display:grid;gap:13px;}
+  .g3{grid-template-columns:repeat(3,1fr);}.g2{grid-template-columns:repeat(2,1fr);}.g1{grid-template-columns:1fr;}
+  .pcard{border:2px solid var(--line);background:#fff;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;box-shadow:2px 2px 0 rgba(0,0,0,.08);}
+  .pcard .body{padding:11px 13px;display:flex;flex-direction:column;gap:7px;flex:1;}
+  .pcard .title{font-size:16px;}
+  .pcard .arrow{font-family:var(--note);color:var(--accent);font-size:14px;margin-top:auto;}
+
+  .band{border:2px solid var(--line);border-radius:12px;background:var(--shade);padding:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:3px 3px 0 rgba(0,0,0,.08);}
+  .band.dark{background:#2b2824;color:#efeae0;border-color:#000;}
+  .band.dark .h-l{color:#fff;}
+  .foot{background:#2b2824;color:#cbc5ba;padding:18px 20px;border-top:3px solid var(--accent);display:flex;gap:24px;flex-wrap:wrap;font-size:13px;}
+  .foot .ln{background:#48443e;}
+  .stars{color:var(--accent);font-size:17px;letter-spacing:2px;}
+
+  /* mobile sticky call bar */
+  .mcall{position:sticky;bottom:0;background:#1f1d1a;border-top:2px solid var(--accent);padding:9px 12px;display:flex;gap:9px;}
+  .mcall .btn{flex:1;justify-content:center;font-size:14px;}
+
+  .reflow{font-family:var(--note);font-size:15px;color:var(--ink-soft);background:#fff;border:1.5px dashed var(--line-soft);border-radius:8px;padding:7px 11px;margin:6px 0 0;}
+  .reflow b{color:var(--accent);}
+
+  @media(max-width:720px){.devrow{gap:18px;}.h-xl{font-size:26px;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="dot"></span> Vishwakarma Fabrications</div>
+  <div class="sub">responsive wireframes · Product-led · Shutter Mark logo</div>
+  <div class="tabs">
+    <button class="tab active" data-tab="home">Home</button>
+    <button class="tab" data-tab="products">Products</button>
+    <button class="tab" data-tab="detail">Product detail</button>
+    <button class="tab" data-tab="about">About</button>
+    <button class="tab" data-tab="contact">Contact</button>
+  </div>
+</div>
+<div class="legend">
+  <span><i class="swatch" style="background:#dfdbd1"></i>placeholder content</span>
+  <span><i class="swatch" style="background:#d9772f"></i>CTA / key action</span>
+  <span>📱 Mobile 375 · ▭ Tablet 768 · 🖥 Desktop 1280 — shown per page</span>
+  <span style="margin-left:auto">✎ notes call out responsive behaviour</span>
+</div>
+
+<!-- ===================================================== HOME -->
+<div class="panel active scroll" data-panel="home">
+  <div class="phead">
+    <div class="ptag">Home</div>
+    <div class="pdesc"><b>Product-led landing, three breakpoints.</b> Desktop = 3-column product grid hero. Reflows to 2-col on tablet, single column + hamburger + sticky call bar on mobile. The phone CTA is always reachable.</div>
+  </div>
+
+  <!-- DESKTOP -->
+  <div class="dcap">🖥 <b>Desktop</b> <span class="px">1280px</span> · full nav, 3-col grid</div>
+  <div class="device desktop">
+    <div class="bbar"><i></i><i></i><i></i><div class="u">vishwakarmafabrications.in</div></div>
+    <div class="nav">
+      <div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span><span style="display:flex;flex-direction:column;line-height:1;"><span>VISHWA<span class="amp">KARMA</span></span><small style="font-family:var(--note);font-size:11px;color:var(--ink-soft);margin-top:3px;">Fabrications · Amroha</small></span></div>
+      <div class="links"><span class="on">Home</span><span>Products</span><span>About</span><span>Contact</span></div>
+      <div class="phone">☎ +91 XXXXX XXXXX</div>
+    </div>
+    <div class="pad row" style="align-items:center;">
+      <div class="col" style="flex:1.1;display:flex;flex-direction:column;gap:14px;">
+        <div class="eyebrow">Rolling shutter manufacturers · Amroha, U.P.</div>
+        <h1 class="h-xl">All types of rolling<br>shutters, built to last.</h1>
+        <div class="lines"><div class="ln l"></div><div class="ln m"></div></div>
+        <div style="display:flex;gap:10px;"><span class="btn fill">☎ Call for a quote</span><span class="btn">See products ↓</span></div>
+      </div>
+      <div class="col"><div class="shutter" style="height:200px;"></div></div>
+    </div>
+    <div class="pad" style="padding-top:0;"><div class="stats"><div class="stat"><b>30+</b><span>years experience</span></div><div class="stat"><b>5000+</b><span>shutters built</span></div><div class="stat"><b>1000+</b><span>customers</span></div><div class="stat"><b>CNC</b><span>cutting + moulding</span></div></div></div>
+    <div class="pad" style="padding-top:4px;">
+      <div class="sec-label">What we make</div>
+      <div class="grid g3">
+        <div class="pcard"><div class="ph" style="height:90px"><span class="tag">manual</span></div><div class="body"><div class="title">Manual Shutters</div><div class="arrow">View →</div></div></div>
+        <div class="pcard"><div class="ph" style="height:90px"><span class="tag">motorised</span></div><div class="body"><div class="title">Motorised &amp; Remote</div><div class="arrow">View →</div></div></div>
+        <div class="pcard"><div class="ph" style="height:90px"><span class="tag">grill</span></div><div class="body"><div class="title">Perforated &amp; Grill</div><div class="arrow">View →</div></div></div>
+        <div class="pcard"><div class="ph" style="height:90px"><span class="tag">gates</span></div><div class="body"><div class="title">Collapsible Gates</div><div class="arrow">View →</div></div></div>
+        <div class="pcard"><div class="ph" style="height:90px"><span class="tag">fabrication</span></div><div class="body"><div class="title">Steel Fabrication</div><div class="arrow">View →</div></div></div>
+        <div class="pcard"><div class="ph" style="height:90px"><span class="tag">repair</span></div><div class="body"><div class="title">Repair &amp; Service</div><div class="arrow">View →</div></div></div>
+      </div>
+    </div>
+    <div class="pad"><div class="sec-label">Customer reviews</div><div class="grid g3">
+      <div class="pad" style="border:2px solid var(--line);border-radius:10px;background:#fff"><div class="stars">★★★★★</div><div class="lines" style="margin-top:6px"><div class="ln f"></div><div class="ln l"></div><div class="ln m"></div></div></div>
+      <div class="pad" style="border:2px solid var(--line);border-radius:10px;background:#fff"><div class="stars">★★★★★</div><div class="lines" style="margin-top:6px"><div class="ln f"></div><div class="ln l"></div><div class="ln m"></div></div></div>
+      <div class="pad" style="border:2px solid var(--line);border-radius:10px;background:#fff"><div class="stars">★★★★★</div><div class="lines" style="margin-top:6px"><div class="ln f"></div><div class="ln l"></div><div class="ln m"></div></div></div>
+    </div></div>
+    <div class="pad"><div class="band dark center" style="flex-direction:column;justify-content:center;gap:8px"><h2 class="h-l">Get a free measurement &amp; quote</h2><span class="btn fill">☎ +91 XXXXX XXXXX</span></div></div>
+    <div class="foot"><div style="flex:1.4"><div class="logo" style="color:#fff"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div><div class="lines" style="margin-top:8px"><div class="ln l"></div><div class="ln m"></div></div></div><div class="col"><div style="color:#fff">Products</div><div class="lines" style="margin-top:7px"><div class="ln m"></div><div class="ln s"></div></div></div><div class="col"><div style="color:#fff">Contact</div><div class="lines" style="margin-top:7px"><div class="ln m"></div><div class="ln l"></div></div></div></div>
+  </div>
+
+  <!-- TABLET + MOBILE row -->
+  <div class="devrow">
+    <div>
+      <div class="dcap">▭ <b>Tablet</b> <span class="px">768px</span> · 2-col grid</div>
+      <div class="device tablet">
+        <div class="bbar"><i></i><i></i><i></i><div class="u">vishwakarmafabrications.in</div></div>
+        <div class="nav compact">
+          <div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWA<span class="amp">KARMA</span></div>
+          <div class="links"><span class="on">Home</span><span>Products</span><span>About</span><span>Contact</span></div>
+          <div class="phone icon">☎</div>
+        </div>
+        <div class="pad" style="display:flex;flex-direction:column;gap:12px;">
+          <div class="eyebrow">Rolling shutters · Amroha</div>
+          <h1 class="h-xl">All types of rolling shutters, built to last.</h1>
+          <div style="display:flex;gap:9px;"><span class="btn fill">☎ Call for a quote</span><span class="btn">Products</span></div>
+          <div class="shutter" style="height:130px;"></div>
+          <div class="stats"><div class="stat"><b>30+</b><span>years</span></div><div class="stat"><b>5000+</b><span>built</span></div><div class="stat"><b>1000+</b><span>customers</span></div></div>
+        </div>
+        <div class="pad" style="padding-top:0"><div class="sec-label">What we make</div>
+          <div class="grid g2">
+            <div class="pcard"><div class="ph" style="height:70px"><span class="tag">manual</span></div><div class="body"><div class="title">Manual</div></div></div>
+            <div class="pcard"><div class="ph" style="height:70px"><span class="tag">motorised</span></div><div class="body"><div class="title">Motorised</div></div></div>
+            <div class="pcard"><div class="ph" style="height:70px"><span class="tag">grill</span></div><div class="body"><div class="title">Perforated</div></div></div>
+            <div class="pcard"><div class="ph" style="height:70px"><span class="tag">gates</span></div><div class="body"><div class="title">Gates</div></div></div>
+          </div>
+        </div>
+        <div class="foot"><div class="logo" style="color:#fff"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div></div>
+      </div>
+      <div class="reflow"><b>Tablet reflow:</b> nav stays inline, phone shrinks to icon · product grid 3→2 columns · hero text + image stack tighter.</div>
+    </div>
+
+    <div>
+      <div class="dcap">📱 <b>Mobile</b> <span class="px">375px</span> · hamburger + sticky call</div>
+      <div class="device mobile">
+        <div class="notch"><i></i></div>
+        <div class="nav" style="padding:11px 14px;gap:10px;">
+          <span class="ham">☰</span>
+          <div class="logo" style="font-size:14px"><span class="mk" style="width:26px;height:26px"><span class="sl"></span><span class="rl"></span></span> VISHWA<span class="amp">KARMA</span></div>
+          <div class="phone icon" style="margin-left:auto">☎</div>
+        </div>
+        <div class="pad" style="display:flex;flex-direction:column;gap:11px;">
+          <div class="eyebrow">Shutters · Amroha</div>
+          <h1 class="h-xl">All types of rolling shutters, built to last.</h1>
+          <span class="btn fill full">☎ Call for a quote</span>
+          <div class="shutter" style="height:110px;"></div>
+          <div class="stats"><div class="stat"><b>30+</b><span>yrs</span></div><div class="stat"><b>5000+</b><span>built</span></div></div>
+          <div class="sec-label">What we make</div>
+          <div class="grid g1">
+            <div class="pcard"><div class="ph" style="height:64px"><span class="tag">manual</span></div><div class="body"><div class="title">Manual Shutters</div><div class="arrow">View →</div></div></div>
+            <div class="pcard"><div class="ph" style="height:64px"><span class="tag">motorised</span></div><div class="body"><div class="title">Motorised &amp; Remote</div><div class="arrow">View →</div></div></div>
+            <div class="pcard"><div class="ph" style="height:64px"><span class="tag">grill</span></div><div class="body"><div class="title">Perforated &amp; Grill</div><div class="arrow">View →</div></div></div>
+          </div>
+          <span class="btn full">See all products →</span>
+          <div class="sec-label">Reviews</div>
+          <div class="pad" style="border:2px solid var(--line);border-radius:10px;background:#fff;padding:13px"><div class="stars">★★★★★</div><div class="lines" style="margin-top:6px"><div class="ln f"></div><div class="ln m"></div></div></div>
+        </div>
+        <div class="mcall"><span class="btn fill" style="flex:1;justify-content:center">☎ Call now</span><span class="btn" style="flex:1;justify-content:center;background:#fff">WhatsApp</span></div>
+      </div>
+      <div class="reflow"><b>Mobile reflow:</b> nav → <b>hamburger</b> drawer · single-column cards (show 3 + "see all") · <b>sticky Call / WhatsApp bar</b> pinned to bottom.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== PRODUCTS -->
+<div class="panel scroll" data-panel="products">
+  <div class="phead">
+    <div class="ptag">Products</div>
+    <div class="pdesc"><b>The full catalog.</b> Filter chips by type, then a card grid (3 / 2 / 1 columns). Each card links to a product detail page.</div>
+  </div>
+
+  <div class="dcap">🖥 <b>Desktop</b> <span class="px">1280px</span></div>
+  <div class="device desktop">
+    <div class="bbar"><i></i><i></i><i></i><div class="u">/products</div></div>
+    <div class="nav"><div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWA<span class="amp">KARMA</span></div><div class="links"><span>Home</span><span class="on">Products</span><span>About</span><span>Contact</span></div><div class="phone">☎ +91 XXXXX XXXXX</div></div>
+    <div class="pad"><h1 class="h-l">Our Products</h1><div class="lines" style="margin-top:8px;max-width:520px"><div class="ln l"></div></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;"><span class="btn fill" style="padding:5px 12px;font-size:13px">All</span><span class="btn" style="padding:5px 12px;font-size:13px">Manual</span><span class="btn" style="padding:5px 12px;font-size:13px">Motorised</span><span class="btn" style="padding:5px 12px;font-size:13px">Perforated</span><span class="btn" style="padding:5px 12px;font-size:13px">Gates</span><span class="btn" style="padding:5px 12px;font-size:13px">Fabrication</span><span class="btn" style="padding:5px 12px;font-size:13px">Repair</span></div>
+      <div class="note flat">filter chips → filter the grid (client-side)</div>
+    </div>
+    <div class="pad" style="padding-top:6px"><div class="grid g3">
+      <div class="pcard"><div class="ph" style="height:110px"><span class="tag">manual</span></div><div class="body"><div class="title">Manual Rolling Shutters</div><div class="lines"><div class="ln f"></div><div class="ln m"></div></div><div class="arrow">View details →</div></div></div>
+      <div class="pcard"><div class="ph" style="height:110px"><span class="tag">motorised</span></div><div class="body"><div class="title">Motorised &amp; Remote</div><div class="lines"><div class="ln f"></div><div class="ln m"></div></div><div class="arrow">View details →</div></div></div>
+      <div class="pcard"><div class="ph" style="height:110px"><span class="tag">grill</span></div><div class="body"><div class="title">Perforated &amp; Grill</div><div class="lines"><div class="ln f"></div><div class="ln m"></div></div><div class="arrow">View details →</div></div></div>
+      <div class="pcard"><div class="ph" style="height:110px"><span class="tag">gates</span></div><div class="body"><div class="title">Collapsible &amp; Sliding Gates</div><div class="lines"><div class="ln f"></div><div class="ln m"></div></div><div class="arrow">View details →</div></div></div>
+      <div class="pcard"><div class="ph" style="height:110px"><span class="tag">fabrication</span></div><div class="body"><div class="title">Steel Fabrication</div><div class="lines"><div class="ln f"></div><div class="ln m"></div></div><div class="arrow">View details →</div></div></div>
+      <div class="pcard"><div class="ph" style="height:110px"><span class="tag">repair</span></div><div class="body"><div class="title">Repair &amp; Maintenance</div><div class="lines"><div class="ln f"></div><div class="ln m"></div></div><div class="arrow">View details →</div></div></div>
+    </div></div>
+    <div class="pad"><div class="band dark center" style="flex-direction:column;justify-content:center;gap:8px"><h2 class="h-l">Can't find it? We build custom.</h2><span class="btn fill">☎ Call us</span></div></div>
+  </div>
+
+  <div class="devrow">
+    <div>
+      <div class="dcap">▭ <b>Tablet</b> <span class="px">768px</span></div>
+      <div class="device tablet">
+        <div class="bbar"><i></i><i></i><i></i><div class="u">/products</div></div>
+        <div class="nav compact"><div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div><div class="links"><span>Home</span><span class="on">Products</span><span>About</span></div><div class="phone icon">☎</div></div>
+        <div class="pad"><h1 class="h-l">Our Products</h1><div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px"><span class="btn fill" style="padding:4px 10px;font-size:12px">All</span><span class="btn" style="padding:4px 10px;font-size:12px">Manual</span><span class="btn" style="padding:4px 10px;font-size:12px">Motorised</span><span class="btn" style="padding:4px 10px;font-size:12px">Gates</span></div></div>
+        <div class="pad" style="padding-top:6px"><div class="grid g2">
+          <div class="pcard"><div class="ph" style="height:80px"><span class="tag">manual</span></div><div class="body"><div class="title">Manual</div><div class="arrow">View →</div></div></div>
+          <div class="pcard"><div class="ph" style="height:80px"><span class="tag">motorised</span></div><div class="body"><div class="title">Motorised</div><div class="arrow">View →</div></div></div>
+          <div class="pcard"><div class="ph" style="height:80px"><span class="tag">grill</span></div><div class="body"><div class="title">Perforated</div><div class="arrow">View →</div></div></div>
+          <div class="pcard"><div class="ph" style="height:80px"><span class="tag">gates</span></div><div class="body"><div class="title">Gates</div><div class="arrow">View →</div></div></div>
+        </div></div>
+      </div>
+      <div class="reflow"><b>Tablet:</b> filter chips wrap to one row · grid 3→2 columns.</div>
+    </div>
+    <div>
+      <div class="dcap">📱 <b>Mobile</b> <span class="px">375px</span></div>
+      <div class="device mobile">
+        <div class="notch"><i></i></div>
+        <div class="nav" style="padding:11px 14px;gap:10px"><span class="ham">☰</span><div class="logo" style="font-size:14px"><span class="mk" style="width:26px;height:26px"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div><div class="phone icon" style="margin-left:auto">☎</div></div>
+        <div class="pad"><h1 class="h-l">Our Products</h1>
+          <div style="display:flex;gap:7px;overflow:hidden;margin-top:10px"><span class="btn fill" style="padding:4px 10px;font-size:12px">All</span><span class="btn" style="padding:4px 10px;font-size:12px">Manual</span><span class="btn" style="padding:4px 10px;font-size:12px">Motorised</span><span class="btn" style="padding:4px 10px;font-size:12px">›</span></div>
+        </div>
+        <div class="pad" style="padding-top:6px"><div class="grid g1">
+          <div class="pcard"><div class="ph" style="height:64px"><span class="tag">manual</span></div><div class="body"><div class="title">Manual Shutters</div><div class="arrow">View details →</div></div></div>
+          <div class="pcard"><div class="ph" style="height:64px"><span class="tag">motorised</span></div><div class="body"><div class="title">Motorised &amp; Remote</div><div class="arrow">View details →</div></div></div>
+          <div class="pcard"><div class="ph" style="height:64px"><span class="tag">grill</span></div><div class="body"><div class="title">Perforated &amp; Grill</div><div class="arrow">View details →</div></div></div>
+        </div></div>
+        <div class="mcall"><span class="btn fill" style="flex:1;justify-content:center">☎ Call now</span><span class="btn" style="flex:1;justify-content:center;background:#fff">WhatsApp</span></div>
+      </div>
+      <div class="reflow"><b>Mobile:</b> filter chips horizontally scroll · single-column cards.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== PRODUCT DETAIL -->
+<div class="panel scroll" data-panel="detail">
+  <div class="phead">
+    <div class="ptag">Product detail</div>
+    <div class="pdesc"><b>One product, in depth.</b> Gallery + key specs + options, a sticky "Call to order" action, related products. Template reused for all 6 product types.</div>
+  </div>
+
+  <div class="dcap">🖥 <b>Desktop</b> <span class="px">1280px</span> · gallery left, specs right</div>
+  <div class="device desktop">
+    <div class="bbar"><i></i><i></i><i></i><div class="u">/products/motorised-rolling-shutter</div></div>
+    <div class="nav"><div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWA<span class="amp">KARMA</span></div><div class="links"><span>Home</span><span class="on">Products</span><span>About</span><span>Contact</span></div><div class="phone">☎ +91 XXXXX XXXXX</div></div>
+    <div class="pad" style="font-family:var(--note);color:var(--ink-soft);font-size:15px">Home › Products › <b style="color:var(--ink)">Motorised &amp; Remote</b></div>
+    <div class="pad row" style="padding-top:0;align-items:flex-start;gap:20px">
+      <div class="col" style="flex:1.1"><div class="ph" style="height:230px"><span class="tag">main product photo</span></div><div class="row" style="margin-top:10px;gap:8px"><div class="ph" style="height:54px;flex:1"></div><div class="ph" style="height:54px;flex:1"></div><div class="ph" style="height:54px;flex:1"></div></div></div>
+      <div class="col" style="display:flex;flex-direction:column;gap:12px">
+        <h1 class="h-l">Motorised &amp; Remote Shutters</h1>
+        <div class="lines"><div class="ln f"></div><div class="ln l"></div><div class="ln m"></div></div>
+        <div class="sec-label" style="margin:6px 0 4px">Key specs</div>
+        <div style="font-family:'Courier New',monospace;font-size:13px;color:var(--ink-soft);line-height:1.9"><div>WIDTH&nbsp;&nbsp;&nbsp;up to 14'-0"</div><div>GAUGE&nbsp;&nbsp;&nbsp;18 / 20 / 22</div><div>MOTOR&nbsp;&nbsp;&nbsp;0.5 – 2.0 HP</div><div>FINISH&nbsp;&nbsp;powder-coat, any colour</div></div>
+        <div class="sec-label" style="margin:6px 0 4px">Options</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap"><span class="btn" style="padding:5px 11px;font-size:13px">Remote</span><span class="btn" style="padding:5px 11px;font-size:13px">Wall switch</span><span class="btn" style="padding:5px 11px;font-size:13px">Manual override</span></div>
+        <span class="btn fill" style="margin-top:6px">☎ Call to order / enquire</span>
+        <div class="note">sticky on scroll (desktop) so the CTA stays visible</div>
+      </div>
+    </div>
+    <div class="pad"><div class="sec-label">Related products</div><div class="grid g3"><div class="pcard"><div class="ph" style="height:80px"><span class="tag">manual</span></div><div class="body"><div class="title">Manual</div></div></div><div class="pcard"><div class="ph" style="height:80px"><span class="tag">grill</span></div><div class="body"><div class="title">Perforated</div></div></div><div class="pcard"><div class="ph" style="height:80px"><span class="tag">gates</span></div><div class="body"><div class="title">Gates</div></div></div></div></div>
+  </div>
+
+  <div class="devrow">
+    <div>
+      <div class="dcap">▭ <b>Tablet</b> <span class="px">768px</span></div>
+      <div class="device tablet">
+        <div class="bbar"><i></i><i></i><i></i><div class="u">/products/motorised</div></div>
+        <div class="nav compact"><div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div><div class="phone icon" style="margin-left:auto">☎</div></div>
+        <div class="pad" style="display:flex;flex-direction:column;gap:11px">
+          <div class="ph" style="height:140px"><span class="tag">main product photo</span></div>
+          <div class="row" style="gap:7px"><div class="ph" style="height:44px;flex:1"></div><div class="ph" style="height:44px;flex:1"></div><div class="ph" style="height:44px;flex:1"></div></div>
+          <h1 class="h-l">Motorised &amp; Remote Shutters</h1>
+          <div class="lines"><div class="ln f"></div><div class="ln l"></div></div>
+          <div style="font-family:'Courier New',monospace;font-size:12px;color:var(--ink-soft);line-height:1.8"><div>WIDTH up to 14'-0" · GAUGE 18/20/22</div><div>MOTOR 0.5–2.0 HP · powder-coat finish</div></div>
+          <span class="btn fill full">☎ Call to order</span>
+        </div>
+      </div>
+      <div class="reflow"><b>Tablet:</b> gallery moves above specs (single column), specs full-width.</div>
+    </div>
+    <div>
+      <div class="dcap">📱 <b>Mobile</b> <span class="px">375px</span></div>
+      <div class="device mobile">
+        <div class="notch"><i></i></div>
+        <div class="nav" style="padding:11px 14px;gap:10px"><span class="ham">☰</span><div class="logo" style="font-size:14px"><span class="mk" style="width:26px;height:26px"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div><div class="phone icon" style="margin-left:auto">☎</div></div>
+        <div class="pad" style="display:flex;flex-direction:column;gap:10px">
+          <div class="ph" style="height:120px"><span class="tag">photo · swipe gallery</span></div>
+          <h1 class="h-l">Motorised &amp; Remote Shutters</h1>
+          <div class="lines"><div class="ln f"></div><div class="ln l"></div><div class="ln m"></div></div>
+          <div class="sec-label" style="margin:4px 0">Key specs</div>
+          <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--ink-soft);line-height:1.8"><div>WIDTH up to 14'-0"</div><div>MOTOR 0.5–2.0 HP</div><div>FINISH any colour</div></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="btn" style="padding:4px 9px;font-size:12px">Remote</span><span class="btn" style="padding:4px 9px;font-size:12px">Switch</span></div>
+        </div>
+        <div class="mcall"><span class="btn fill" style="flex:1;justify-content:center">☎ Call to order</span></div>
+      </div>
+      <div class="reflow"><b>Mobile:</b> swipeable photo gallery · specs stack · sticky <b>Call to order</b> bar.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== ABOUT -->
+<div class="panel scroll" data-panel="about">
+  <div class="phead">
+    <div class="ptag">About</div>
+    <div class="pdesc"><b>The story &amp; the proof.</b> 30-year history, the workshop &amp; machines, the team, and a stat band. "Three generations" appears here as a subtitle.</div>
+  </div>
+
+  <div class="dcap">🖥 <b>Desktop</b> <span class="px">1280px</span></div>
+  <div class="device desktop">
+    <div class="bbar"><i></i><i></i><i></i><div class="u">/about</div></div>
+    <div class="nav"><div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWA<span class="amp">KARMA</span></div><div class="links"><span>Home</span><span>Products</span><span class="on">About</span><span>Contact</span></div><div class="phone">☎ +91 XXXXX XXXXX</div></div>
+    <div class="pad center" style="display:flex;flex-direction:column;align-items:center;gap:8px"><div class="eyebrow">Our story</div><h1 class="h-xl" style="max-width:560px">Building shutters in Amroha for 30+ years.</h1><div class="note flat" style="font-size:18px;color:var(--ink-soft)">a family business, run across three generations</div></div>
+    <div class="pad row" style="align-items:center;gap:20px"><div class="col"><div class="ph" style="height:180px"><span class="tag">workshop / founder photo</span></div></div><div class="col lines"><div class="ln f"></div><div class="ln l"></div><div class="ln f"></div><div class="ln m"></div><div class="ln l"></div></div></div>
+    <div class="pad"><div class="stats"><div class="stat"><b>30+</b><span>years experience</span></div><div class="stat"><b>5000+</b><span>shutters built</span></div><div class="stat"><b>1000+</b><span>happy customers</span></div><div class="stat"><b>CNC</b><span>modern machinery</span></div></div></div>
+    <div class="pad"><div class="sec-label">Our machines</div><div class="grid g3"><div class="pcard"><div class="ph" style="height:90px"><span class="tag">moulding</span></div><div class="body"><div class="title">Slat moulding</div></div></div><div class="pcard"><div class="ph" style="height:90px"><span class="tag">CNC cutting</span></div><div class="body"><div class="title">CNC cutting</div></div></div><div class="pcard"><div class="ph" style="height:90px"><span class="tag">welding</span></div><div class="body"><div class="title">Fabrication</div></div></div></div></div>
+    <div class="pad"><div class="band dark center" style="flex-direction:column;justify-content:center;gap:8px"><h2 class="h-l">Visit our workshop in Amroha</h2><span class="btn fill">☎ +91 XXXXX XXXXX</span></div></div>
+  </div>
+
+  <div class="devrow">
+    <div>
+      <div class="dcap">▭ <b>Tablet</b> <span class="px">768px</span></div>
+      <div class="device tablet">
+        <div class="bbar"><i></i><i></i><i></i><div class="u">/about</div></div>
+        <div class="nav compact"><div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div><div class="links"><span>Home</span><span>Products</span><span class="on">About</span></div><div class="phone icon">☎</div></div>
+        <div class="pad center" style="display:flex;flex-direction:column;align-items:center;gap:7px"><div class="eyebrow">Our story</div><h1 class="h-l">Building shutters in Amroha for 30+ years.</h1><div style="font-family:var(--note);color:var(--ink-soft)">a family business across three generations</div></div>
+        <div class="pad" style="display:flex;flex-direction:column;gap:11px"><div class="ph" style="height:130px"><span class="tag">workshop photo</span></div><div class="lines"><div class="ln f"></div><div class="ln l"></div><div class="ln m"></div></div><div class="stats"><div class="stat"><b>30+</b><span>years</span></div><div class="stat"><b>5000+</b><span>built</span></div><div class="stat"><b>1000+</b><span>customers</span></div></div></div>
+      </div>
+      <div class="reflow"><b>Tablet:</b> story photo + text stack vertically · stats stay in a row.</div>
+    </div>
+    <div>
+      <div class="dcap">📱 <b>Mobile</b> <span class="px">375px</span></div>
+      <div class="device mobile">
+        <div class="notch"><i></i></div>
+        <div class="nav" style="padding:11px 14px;gap:10px"><span class="ham">☰</span><div class="logo" style="font-size:14px"><span class="mk" style="width:26px;height:26px"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div><div class="phone icon" style="margin-left:auto">☎</div></div>
+        <div class="pad center" style="display:flex;flex-direction:column;align-items:center;gap:7px"><div class="eyebrow">Our story</div><h1 class="h-l">30+ years building shutters in Amroha.</h1><div style="font-family:var(--note);color:var(--ink-soft);font-size:15px">a family business, three generations</div></div>
+        <div class="pad" style="display:flex;flex-direction:column;gap:10px"><div class="ph" style="height:110px"><span class="tag">workshop photo</span></div><div class="lines"><div class="ln f"></div><div class="ln l"></div><div class="ln m"></div></div><div class="stats"><div class="stat"><b>30+</b><span>yrs</span></div><div class="stat"><b>5000+</b><span>built</span></div></div></div>
+        <div class="mcall"><span class="btn fill" style="flex:1;justify-content:center">☎ Call now</span></div>
+      </div>
+      <div class="reflow"><b>Mobile:</b> everything single column, centered · stats 2-up.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== CONTACT -->
+<div class="panel scroll" data-panel="contact">
+  <div class="phead">
+    <div class="ptag">Contact</div>
+    <div class="pdesc"><b>Make it effortless to reach you.</b> Big tap-to-call &amp; WhatsApp, a short enquiry form (Netlify Forms), address + Google map, and hours. Phone is the primary action.</div>
+  </div>
+
+  <div class="dcap">🖥 <b>Desktop</b> <span class="px">1280px</span> · details left, form right</div>
+  <div class="device desktop">
+    <div class="bbar"><i></i><i></i><i></i><div class="u">/contact</div></div>
+    <div class="nav"><div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWA<span class="amp">KARMA</span></div><div class="links"><span>Home</span><span>Products</span><span>About</span><span class="on">Contact</span></div><div class="phone">☎ +91 XXXXX XXXXX</div></div>
+    <div class="pad row" style="align-items:flex-start;gap:22px">
+      <div class="col" style="display:flex;flex-direction:column;gap:12px">
+        <h1 class="h-l">Get in touch</h1>
+        <span class="btn fill full" style="justify-content:flex-start">☎ +91 XXXXX XXXXX</span>
+        <span class="btn full" style="justify-content:flex-start;background:#fff">WhatsApp us</span>
+        <div style="font-family:var(--note);color:var(--ink-soft);font-size:16px;line-height:1.5">📍 T.P. Nagar Churaha, Joya Road,<br>Amroha, Uttar Pradesh — 244221</div>
+        <div style="font-family:var(--note);color:var(--ink-soft);font-size:16px">🕑 Mon–Sat · 9am – 7pm</div>
+        <div class="ph" style="height:150px"><span class="tag">Google map embed</span></div>
+      </div>
+      <div class="col" style="border:2px solid var(--line);border-radius:12px;background:#fff;padding:18px;display:flex;flex-direction:column;gap:10px">
+        <div class="h-m">Send an enquiry</div>
+        <div class="ph" style="height:34px;background:#fff"><span class="tag">Name</span></div>
+        <div class="ph" style="height:34px;background:#fff"><span class="tag">Phone</span></div>
+        <div class="ph" style="height:34px;background:#fff"><span class="tag">Product / service ▾</span></div>
+        <div class="ph" style="height:70px;background:#fff"><span class="tag">Message</span></div>
+        <span class="btn fill full">Send enquiry</span>
+        <div class="note">Netlify Forms — no backend needed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="devrow">
+    <div>
+      <div class="dcap">▭ <b>Tablet</b> <span class="px">768px</span></div>
+      <div class="device tablet">
+        <div class="bbar"><i></i><i></i><i></i><div class="u">/contact</div></div>
+        <div class="nav compact"><div class="logo"><span class="mk"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div><div class="links"><span>Home</span><span>Products</span><span class="on">Contact</span></div><div class="phone icon">☎</div></div>
+        <div class="pad" style="display:flex;flex-direction:column;gap:11px">
+          <h1 class="h-l">Get in touch</h1>
+          <div class="row" style="gap:9px"><span class="btn fill" style="flex:1;justify-content:center">☎ Call</span><span class="btn" style="flex:1;justify-content:center;background:#fff">WhatsApp</span></div>
+          <div style="font-family:var(--note);color:var(--ink-soft);font-size:15px">📍 T.P. Nagar Churaha, Joya Road, Amroha — 244221 · 🕑 Mon–Sat 9–7</div>
+          <div class="ph" style="height:110px"><span class="tag">Google map</span></div>
+          <div style="border:2px solid var(--line);border-radius:10px;background:#fff;padding:13px;display:flex;flex-direction:column;gap:8px"><div class="h-m">Send an enquiry</div><div class="ph" style="height:30px;background:#fff"><span class="tag">Name</span></div><div class="ph" style="height:30px;background:#fff"><span class="tag">Phone</span></div><div class="ph" style="height:54px;background:#fff"><span class="tag">Message</span></div><span class="btn fill full">Send</span></div>
+        </div>
+      </div>
+      <div class="reflow"><b>Tablet:</b> details + form stack vertically; call/WhatsApp side by side.</div>
+    </div>
+    <div>
+      <div class="dcap">📱 <b>Mobile</b> <span class="px">375px</span></div>
+      <div class="device mobile">
+        <div class="notch"><i></i></div>
+        <div class="nav" style="padding:11px 14px;gap:10px"><span class="ham">☰</span><div class="logo" style="font-size:14px"><span class="mk" style="width:26px;height:26px"><span class="sl"></span><span class="rl"></span></span> VISHWAKARMA</div><div class="phone icon" style="margin-left:auto">☎</div></div>
+        <div class="pad" style="display:flex;flex-direction:column;gap:10px">
+          <h1 class="h-l">Get in touch</h1>
+          <span class="btn fill full">☎ +91 XXXXX XXXXX</span>
+          <span class="btn full" style="background:#fff">WhatsApp us</span>
+          <div style="font-family:var(--note);color:var(--ink-soft);font-size:14px">📍 T.P. Nagar Churaha, Joya Rd,<br>Amroha — 244221 · 🕑 Mon–Sat 9–7</div>
+          <div class="ph" style="height:100px"><span class="tag">Google map</span></div>
+          <div style="border:2px solid var(--line);border-radius:10px;background:#fff;padding:12px;display:flex;flex-direction:column;gap:8px"><div class="h-m">Enquiry</div><div class="ph" style="height:30px;background:#fff"><span class="tag">Name</span></div><div class="ph" style="height:30px;background:#fff"><span class="tag">Phone</span></div><div class="ph" style="height:50px;background:#fff"><span class="tag">Message</span></div><span class="btn fill full">Send</span></div>
+        </div>
+        <div class="mcall"><span class="btn fill" style="flex:1;justify-content:center">☎ Call now</span><span class="btn" style="flex:1;justify-content:center;background:#fff">WhatsApp</span></div>
+      </div>
+      <div class="reflow"><b>Mobile:</b> call &amp; WhatsApp buttons first (above the fold), form below, sticky bar.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tabs=document.querySelectorAll('.tab');
+  const panels=document.querySelectorAll('.panel');
+  function go(id){tabs.forEach(t=>t.classList.toggle('active',t.dataset.tab===id));panels.forEach(p=>p.classList.toggle('active',p.dataset.panel===id));try{localStorage.setItem('vf_rwf',id);}catch(e){}window.scrollTo({top:0});}
+  tabs.forEach(t=>t.addEventListener('click',()=>go(t.dataset.tab)));
+  let s='home';try{s=localStorage.getItem('vf_rwf')||'home';}catch(e){}
+  if([...tabs].some(t=>t.dataset.tab===s))go(s);
+</script>
+</body>
+</html>

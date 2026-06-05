@@ -1,0 +1,18 @@
+<!--
+  Static HTML form so Netlify's build-time bot can detect the enquiry form.
+  The live form is a React component (src/pages/contact.js) that posts to "/"
+  with form-name=enquiry. The field names here MUST match that component.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8" /><title>Forms</title></head>
+<body>
+  <form name="enquiry" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="tel" name="phone" />
+    <input type="text" name="product" />
+    <textarea name="message"></textarea>
+    <input type="text" name="bot-field" />
+  </form>
+</body>
+</html>

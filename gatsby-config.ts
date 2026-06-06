@@ -4,6 +4,8 @@
  * contact details used by components). Keep the two phone/address values in sync.
  */
 import type { GatsbyConfig } from "gatsby";
+import autoprefixer from "autoprefixer";
+import tailwindcss from "tailwindcss";
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -19,7 +21,7 @@ const config: GatsbyConfig = {
       resolve: "gatsby-plugin-postcss",
       options: {
         // Tailwind picks up ./tailwind.config.ts automatically.
-        postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
+        postCssPlugins: [tailwindcss, autoprefixer],
       },
     },
     "gatsby-plugin-react-helmet",

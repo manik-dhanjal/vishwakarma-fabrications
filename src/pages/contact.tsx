@@ -1,32 +1,51 @@
-import React, { useState } from "react";
+import * as React from "react";
+import { useState } from "react";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { Placeholder } from "../components/ui";
 import { Phone, Whatsapp, Mail, MapPin, Clock } from "../components/icons";
-import products from "../data/products.json";
+import products from "../data/products";
 import site from "../data/site";
 
-const encode = (data) =>
+interface FormValues {
+  name: string;
+  phone: string;
+  product: string;
+  message: string;
+  "bot-field": string;
+}
+
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
+type FormErrors = {
+  name?: string;
+  phone?: string;
+};
+
+const encode = (data: Record<string, string>) =>
   Object.keys(data)
     .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
     .join("&");
 
 export default function ContactPage() {
-  const [values, setValues] = useState({
+  const [values, setValues] = useState<FormValues>({
     name: "",
     phone: "",
     product: "",
     message: "",
     "bot-field": "",
   });
-  const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [status, setStatus] = useState<FormStatus>("idle");
 
-  const set = (e) =>
-    setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
+  const set = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
 
   const validate = () => {
-    const er = {};
+    const er: FormErrors = {};
     if (!values.name.trim()) er.name = "Please enter your name.";
     if (!/^[0-9+\-\s]{7,15}$/.test(values.phone.trim()))
       er.phone = "Please enter a valid phone number.";
@@ -34,7 +53,7 @@ export default function ContactPage() {
     return Object.keys(er).length === 0;
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validate()) return;
     setStatus("submitting");
@@ -79,7 +98,7 @@ export default function ContactPage() {
               />
             ) : (
               <Placeholder
-                label="Google Map embed  add mapEmbedSrc in src/data/site.js"
+                label="Google Map embed  add mapEmbedSrc in src/data/site.ts"
                 height={200}
                 style={{ marginTop: 8 }}
               />
@@ -214,7 +233,7 @@ export default function ContactPage() {
                   <textarea
                     id="message"
                     name="message"
-                    rows="4"
+                    rows={4}
                     value={values.message}
                     onChange={set}
                   />

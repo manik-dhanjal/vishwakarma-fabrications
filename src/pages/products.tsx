@@ -1,8 +1,9 @@
-import React, { useState, useMemo } from "react";
+import * as React from "react";
+import { useState, useMemo } from "react";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { ProductCard, CtaBand } from "../components/ui";
-import products from "../data/products.json";
+import products from "../data/products";
 
 const CATEGORIES = [
   "All",

@@ -1,10 +1,23 @@
-import React from "react";
+import * as React from "react";
 import { Link } from "gatsby";
 import site from "../data/site";
+import type { Product, Review, Stat } from "../types";
+
+interface PlaceholderProps {
+  label?: string;
+  height?: number;
+  shutter?: boolean;
+  style?: React.CSSProperties;
+}
 
 /* Striped placeholder standing in for a real photo. Swap for <img>/GatsbyImage
    once real photos exist. `label` describes what belongs here. */
-export function Placeholder({ label, height = 120, shutter = false, style }) {
+export function Placeholder({
+  label,
+  height = 120,
+  shutter = false,
+  style,
+}: PlaceholderProps) {
   return (
     <div
       className={`ph${shutter ? " ph--shutter" : ""}`}
@@ -15,7 +28,7 @@ export function Placeholder({ label, height = 120, shutter = false, style }) {
   );
 }
 
-export function Stars({ count = 5 }) {
+export function Stars({ count = 5 }: { count?: number }) {
   return (
     <div className="review__stars" aria-label={`${count} star rating`}>
       {"★".repeat(count)}
@@ -23,7 +36,13 @@ export function Stars({ count = 5 }) {
   );
 }
 
-export function SectionTitle({ kicker, title }) {
+export function SectionTitle({
+  kicker,
+  title,
+}: {
+  kicker?: string;
+  title?: string;
+}) {
   return (
     <>
       {kicker && <div className="sec-kicker">{kicker}</div>}
@@ -32,7 +51,7 @@ export function SectionTitle({ kicker, title }) {
   );
 }
 
-export function StatBar({ stats = site.stats }) {
+export function StatBar({ stats = site.stats }: { stats?: Stat[] }) {
   return (
     <div className="statbar">
       {stats.map((s) => (
@@ -45,7 +64,7 @@ export function StatBar({ stats = site.stats }) {
   );
 }
 
-export function ProductCard({ product }) {
+export function ProductCard({ product }: { product: Product }) {
   return (
     <Link to={`/products/${product.slug}/`} className="pcard">
       <Placeholder label={product.category.toLowerCase()} height={120} />
@@ -58,7 +77,7 @@ export function ProductCard({ product }) {
   );
 }
 
-export function ReviewCard({ review }) {
+export function ReviewCard({ review }: { review: Review }) {
   return (
     <div className="review">
       <Stars count={review.stars} />
@@ -68,7 +87,13 @@ export function ReviewCard({ review }) {
   );
 }
 
-export function CtaBand({ title, cta = "☎ " + site.phoneDisplay }) {
+export function CtaBand({
+  title,
+  cta = "☎ " + site.phoneDisplay,
+}: {
+  title: string;
+  cta?: string;
+}) {
   return (
     <div className="ctaband">
       <h2 className="h2">{title}</h2>

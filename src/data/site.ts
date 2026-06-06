@@ -3,8 +3,10 @@
  * Update the placeholder phone / WhatsApp / email / social URLs with the real
  * values before launch. These feed the Header, MobileMenu, Footer and Contact page.
  */
-const site = {
-  name: "Vishwakarma Fabrications",
+import type { SiteData } from "../types";
+
+const site: SiteData = {
+  name: "Vishwakarma Rolling Shutters",
   tagline: "Rolling shutter manufacturers · Amroha",
 
   // ---- Business ----
@@ -54,4 +56,4 @@ const site = {
   ],
 };
 
-module.exports = site;
+export default site;

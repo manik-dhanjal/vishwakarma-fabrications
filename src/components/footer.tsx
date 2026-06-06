@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import { Link } from "gatsby";
 import { Logo } from "./brand";
 import { Phone, Mail, Whatsapp, Instagram, Facebook, MapPin } from "./icons";
-import products from "../data/products.json";
+import products from "../data/products";
 import site from "../data/site";
 
 export default function Footer() {

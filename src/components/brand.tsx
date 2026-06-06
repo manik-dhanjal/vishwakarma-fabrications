@@ -1,5 +1,12 @@
-import React from "react";
+import * as React from "react";
 import { Link } from "gatsby";
+
+interface ShutterMarkProps {
+  size?: number;
+  block?: string;
+  slat?: string;
+  rail?: string;
+}
 
 /**
  * ShutterMark  the logo mark (abstracted rolling shutter).
@@ -10,14 +17,14 @@ export function ShutterMark({
   block = "#1E2227",
   slat = "#E07A2F",
   rail = "#F4F1EA",
-}) {
+}: ShutterMarkProps) {
   return (
     <svg
       width={size}
       height={size}
       viewBox="0 0 48 48"
       role="img"
-      aria-label="Vishwakarma Fabrications"
+      aria-label="Vishwakarma Rolling Shutters"
     >
       <rect x="0" y="0" width="48" height="48" rx="10" fill={block} />
       <g fill={slat}>
@@ -31,20 +38,27 @@ export function ShutterMark({
   );
 }
 
+interface LogoProps {
+  variant?: "dark" | "light";
+  showSub?: boolean;
+  size?: number;
+  to?: string;
+}
+
 /**
  * Logo lockup  mark + wordmark. `variant="dark"` for dark backgrounds.
- * `showSub` toggles the "Fabrications · Amroha" subline.
+ * `showSub` toggles the "Rolling Shutters · Amroha" subline.
  */
 export function Logo({
   variant = "dark",
   showSub = true,
   size = 36,
   to = "/",
-}) {
+}: LogoProps) {
   const onDark = variant === "dark";
   const markBlock = onDark ? "#272c32" : "#1e2227";
   return (
-    <Link to={to} className="logo" aria-label="Vishwakarma Fabrications  home">
+    <Link to={to} className="logo" aria-label="Vishwakarma Rolling Shutters  home">
       <ShutterMark
         size={size}
         block={markBlock}
@@ -58,7 +72,7 @@ export function Logo({
         >
           VISHWA<b>KARMA</b>
         </span>
-        {showSub && <span className="logo__sub">Fabrications · Amroha</span>}
+        {showSub && <span className="logo__sub">Rolling Shutters · Amroha</span>}
       </span>
     </Link>
   );

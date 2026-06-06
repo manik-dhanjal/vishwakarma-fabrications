@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from "react";
+import * as React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import { Logo } from "./brand";
 import { Menu, Close, Phone, Mail, Whatsapp, Instagram, Facebook, MapPin } from "./icons";
 import site from "../data/site";
 
+interface MobileMenuProps {
+  open: boolean;
+  onClose: () => void;
+}
+
 /* Full-screen mobile menu overlay (dark, Forge & Steel). */
-function MobileMenu({ open, onClose }) {
+function MobileMenu({ open, onClose }: MobileMenuProps) {
   // lock body scroll while open
   useEffect(() => {
     if (typeof document === "undefined") return;

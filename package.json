@@ -1,15 +1,16 @@
 {
-  "name": "vishwakarma-fabrications",
+  "name": "vishwakarma-rolling-shutters",
   "version": "1.0.0",
   "private": true,
-  "description": "Marketing website for Vishwakarma Fabrications  rolling shutters & gates, Amroha.",
-  "author": "Vishwakarma Fabrications",
+  "description": "Marketing website for Vishwakarma Rolling Shutters  rolling shutters & gates, Amroha.",
+  "author": "Vishwakarma Rolling Shutters",
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "gatsby": "^5.13.0",
@@ -21,5 +22,12 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@types/react-helmet": "^6.1.11",
+    "typescript": "^6.0.3"
   }
 }

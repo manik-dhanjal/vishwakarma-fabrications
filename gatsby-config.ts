@@ -1,12 +1,14 @@
 /**
- * Gatsby configuration  Vishwakarma Fabrications
- * Site-wide metadata lives here AND in src/data/site.js (single source for
+ * Gatsby configuration  Vishwakarma Rolling Shutters
+ * Site-wide metadata lives here AND in src/data/site.ts (single source for
  * contact details used by components). Keep the two phone/address values in sync.
  */
-module.exports = {
+import type { GatsbyConfig } from "gatsby";
+
+const config: GatsbyConfig = {
   siteMetadata: {
-    title: "Vishwakarma Fabrications",
-    titleTemplate: "%s | Vishwakarma Fabrications",
+    title: "Vishwakarma Rolling Shutters",
+    titleTemplate: "%s | Vishwakarma Rolling Shutters",
     description:
       "Rolling shutter manufacturers in Amroha, U.P. Manual, motorised, perforated & grill shutters, collapsible gates and repair. 35+ years of experience.",
     siteUrl: "https://vishwakarmafabrications.in",
@@ -22,3 +24,5 @@ module.exports = {
     // a 512px PNG export of the Shutter Mark (see design-reference/).
   ],
 };
+
+export default config;

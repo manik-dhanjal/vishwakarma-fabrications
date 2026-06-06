@@ -1,26 +1,36 @@
-import React, { useState } from "react";
+import * as React from "react";
+import { useState } from "react";
 import { Link } from "gatsby";
+import type { PageProps } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { Placeholder } from "../components/ui";
 import { Phone } from "../components/icons";
-import productsData from "../data/products.json";
+import products from "../data/products";
 import site from "../data/site";
+import type { Product } from "../types";
+
+interface ProductPageContext {
+  slug: string;
+  product?: Product;
+}
 
 /**
- * Product detail template. Page data comes from gatsby-node.js pageContext,
+ * Product detail template. Page data comes from gatsby-node.ts pageContext,
  * with a runtime fallback so the file is resilient.
  */
-export default function ProductTemplate({ pageContext }) {
+export default function ProductTemplate({
+  pageContext,
+}: PageProps<object, ProductPageContext>) {
   const product =
     pageContext.product ||
-    productsData.find((p) => p.slug === pageContext.slug);
+    products.find((p) => p.slug === pageContext.slug);
   const [active, setActive] = useState(0);
   if (!product) return null;
 
   const related = (product.related || [])
-    .map((slug) => productsData.find((p) => p.slug === slug))
-    .filter(Boolean);
+    .map((slug) => products.find((p) => p.slug === slug))
+    .filter((p): p is Product => Boolean(p));
 
   return (
     <Layout>

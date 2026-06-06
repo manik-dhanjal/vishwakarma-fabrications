@@ -1,6 +1,6 @@
-# Vishwakarma Fabrications Website (Gatsby + React)
+# Vishwakarma Rolling Shutters Website (Gatsby + React + TypeScript)
 
-Marketing website for **Vishwakarma Fabrications**, a rolling-shutter & steel-fabrication workshop in Amroha, U.P. Built with **Gatsby 5 + React 18**, styled with plain CSS design tokens, deployed to **Netlify**.
+Marketing website for **Vishwakarma Rolling Shutters**, a rolling-shutter workshop in Amroha, U.P. Built with **Gatsby 5 + React 18 + TypeScript**, styled with plain CSS design tokens, deployed to **Netlify**.
 
 ## Quick start
 
@@ -9,6 +9,7 @@ npm install
 npm run develop      # http://localhost:8000
 npm run build        # production build → ./public
 npm run serve        # preview the production build
+npm run typecheck    # tsc --noEmit (no compile, types only)
 ```
 
 Requires Node 18+.
@@ -16,37 +17,44 @@ Requires Node 18+.
 ## What’s built
 
 - **Pages:** Home (`/`), Products (`/products/`), Product detail (`/products/{slug}/`, generated from data), About (`/about/`), Contact (`/contact/`), 404.
-- **Full-screen mobile menu** (dark “Forge & Steel” overlay) `src/components/header.js`.
-- **Data-driven products** edit `src/data/products.json`; detail pages are created automatically in `gatsby-node.js`.
+- **Full-screen mobile menu** (dark “Forge & Steel” overlay) `src/components/header.tsx`.
+- **Data-driven products** edit `src/data/products.json`; detail pages are created automatically in `gatsby-node.ts`.
 - **Contact form** wired for **Netlify Forms** (no backend).
-- **SEO** with per-page meta + `LocalBusiness` JSON-LD (`src/components/seo.js`), sitemap, robots.txt.
+- **SEO** with per-page meta + `LocalBusiness` JSON-LD (`src/components/seo.tsx`), sitemap, robots.txt.
+- **TypeScript** throughout. Shared domain types live in `src/types.ts`; JSON data is re-exported with types via `src/data/products.ts` and `src/data/reviews.ts`.
 
 ## Project structure
 
 ```
 src/
-  data/        site.js (contact/nav/stats) · products.json · reviews.json
+  types.ts     shared Product / Review / SiteData interfaces
+  data/        site.ts (contact/nav/stats) · products.ts + products.json
+               · reviews.ts + reviews.json
   styles/      tokens.css (design tokens) · global.css (all component styles)
-  components/  brand.js (logo) · header.js (+ mobile menu) · footer.js
-               icons.js · ui.js (cards/stats/cta/placeholder) · seo.js · layout.js
-  pages/       index · products · about · contact · 404
-  templates/   product.js  (product detail)
-static/        __forms.html (Netlify form detection) · robots.txt
-gatsby-config.js · gatsby-node.js · gatsby-browser.js · gatsby-ssr.js · netlify.toml
+  components/  brand.tsx (logo) · header.tsx (+ mobile menu) · footer.tsx
+               icons.tsx · ui.tsx (cards/stats/cta/placeholder) · seo.tsx · layout.tsx
+  pages/       index · products · about · contact · 404   (all .tsx)
+  templates/   product.tsx  (product detail)
+static/        favicon.svg · __forms.html (Netlify form detection) · robots.txt
+tsconfig.json
+gatsby-config.ts · gatsby-node.ts · gatsby-browser.ts · gatsby-ssr.tsx · netlify.toml
 ```
+
+> **JSX runtime:** `tsconfig.json` uses `"jsx": "react"` (classic) to match Gatsby's
+> SSR compiler, so every `.tsx` file imports `React`.
 
 ## Before you launch replace placeholders
 
-1. **`src/data/site.js`** real phone, WhatsApp, email, social URLs, Google Maps embed src, and the stat figures (5000+/1000+ are placeholders).
+1. **`src/data/site.ts`** real phone, WhatsApp, email, social URLs, Google Maps embed src, and the stat figures (5000+/1000+ are placeholders).
 2. **`src/data/products.json`** confirm specs/options per product.
 3. **`src/data/reviews.json`** swap in real Google reviews.
 4. **Photos** every image is a striped `<Placeholder>` for now. Replace with real photos: add files under `src/images/`, install `gatsby-plugin-image` + `gatsby-plugin-sharp`, and swap `<Placeholder>` for `<StaticImage>`/`<GatsbyImage>`. Needed: hero, 6 product shots, workshop + 3 machines, founder/team.
-5. **Favicon / PWA icon** export the Shutter Mark (see `src/components/brand.js`) to a 512px PNG, add `gatsby-plugin-manifest`.
+5. **Favicon / PWA icon** `static/favicon.svg` (derived from the Shutter Mark) is wired up in `gatsby-ssr.tsx`. For a full PWA icon set, export the mark to a 512px PNG and add `gatsby-plugin-manifest`.
 
 ## Design system (quick reference)
 
 - **Colors:** Forge `#E07A2F` · Molten `#BE4D17` · Graphite `#1E2227` · Steel `#5E6770` · Iron `#9AA1A8` · Bone `#F4F1EA`. All in `tokens.css`.
-- **Type:** Archivo (display/body) + JetBrains Mono (specs/labels), loaded in `gatsby-ssr.js`.
+- **Type:** Archivo (display/body) + JetBrains Mono (specs/labels), loaded in `gatsby-ssr.tsx`.
 - **Logo:** `ShutterMark` SVG component recolors for dark backgrounds.
 
 ## Netlify deploy

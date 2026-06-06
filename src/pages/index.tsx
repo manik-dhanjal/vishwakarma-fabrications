@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Link } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -11,8 +11,8 @@ import {
   CtaBand,
 } from "../components/ui";
 import { Phone } from "../components/icons";
-import products from "../data/products.json";
-import reviews from "../data/reviews.json";
+import products from "../data/products";
+import reviews from "../data/reviews";
 import site from "../data/site";
 
 export default function HomePage() {

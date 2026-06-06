@@ -1,10 +1,14 @@
-import React from "react";
+import * as React from "react";
+import type { GatsbySSR } from "gatsby";
 
 /**
- * Inject Google Fonts (Archivo + JetBrains Mono) into <head> for every page.
- * Swap to self-hosted @fontsource later if you want zero third-party requests.
+ * Inject the favicon and Google Fonts (Archivo + JetBrains Mono) into <head>
+ * for every page. Swap fonts to self-hosted @fontsource later if you want zero
+ * third-party requests.
  */
-export const onRenderBody = ({ setHeadComponents }) => {
+export const onRenderBody: GatsbySSR["onRenderBody"] = ({
+  setHeadComponents,
+}) => {
   setHeadComponents([
     <link key="favicon" rel="icon" type="image/svg+xml" href="/favicon.svg" />,
     <link key="gf-pre1" rel="preconnect" href="https://fonts.googleapis.com" />,

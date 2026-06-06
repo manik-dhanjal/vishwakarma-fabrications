@@ -1,13 +1,31 @@
-import React from "react";
+import * as React from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import site from "../data/site";
 
+interface SeoProps {
+  title?: string;
+  description?: string;
+  pathname?: string;
+}
+
+interface SeoQuery {
+  site: {
+    siteMetadata: {
+      title: string;
+      titleTemplate: string;
+      description: string;
+      siteUrl: string;
+      locale: string;
+    };
+  };
+}
+
 /**
  * SEO  page meta + LocalBusiness JSON-LD (critical for local search).
  */
-export default function Seo({ title, description, pathname }) {
-  const { site: data } = useStaticQuery(graphql`
+export default function Seo({ title, description, pathname }: SeoProps) {
+  const { site: data } = useStaticQuery<SeoQuery>(graphql`
     query {
       site {
         siteMetadata {

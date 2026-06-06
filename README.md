@@ -1,6 +1,6 @@
 # Vishwakarma Rolling Shutters Website (Gatsby + React + TypeScript)
 
-Marketing website for **Vishwakarma Rolling Shutters**, a rolling-shutter workshop in Amroha, U.P. Built with **Gatsby 5 + React 18 + TypeScript**, styled with plain CSS design tokens, deployed to **Netlify**.
+Marketing website for **Vishwakarma Rolling Shutters**, a rolling-shutter workshop in Amroha, U.P. Built with **Gatsby 5 + React 18 + TypeScript**, styled with **Tailwind CSS** (utilities inline in the `.tsx`, design tokens in `tokens.css`), deployed to **Netlify**.
 
 ## Quick start
 
@@ -30,18 +30,25 @@ src/
   types.ts     shared Product / Review / SiteData interfaces
   data/        site.ts (contact/nav/stats) · products.ts + products.json
                · reviews.ts + reviews.json
-  styles/      tokens.css (design tokens) · global.css (all component styles)
+  styles/      tokens.css (design tokens / CSS vars) · global.css (Tailwind entry + base resets)
   components/  brand.tsx (logo) · header.tsx (+ mobile menu) · footer.tsx
-               icons.tsx · ui.tsx (cards/stats/cta/placeholder) · seo.tsx · layout.tsx
+               icons.tsx · ui.tsx (cards/stats/cta/placeholder + shared button classes) · seo.tsx · layout.tsx
   pages/       index · products · about · contact · 404   (all .tsx)
   templates/   product.tsx  (product detail)
 static/        favicon.svg · __forms.html (Netlify form detection) · robots.txt
-tsconfig.json
+tsconfig.json · tailwind.config.ts
 gatsby-config.ts · gatsby-node.ts · gatsby-browser.ts · gatsby-ssr.tsx · netlify.toml
 ```
 
 > **JSX runtime:** `tsconfig.json` uses `"jsx": "react"` (classic) to match Gatsby's
 > SSR compiler, so every `.tsx` file imports `React`.
+
+## Styling (Tailwind)
+
+- Component styling is **Tailwind utilities inline** in the `.tsx` files. `global.css` only holds the `@tailwind base/components/utilities` directives plus a tiny base layer (body font/colors).
+- Design tokens stay in `src/styles/tokens.css` as CSS variables and are mapped into the Tailwind theme in `tailwind.config.ts` (`bg-forge`, `text-steel`, `rounded-md`, `shadow-card`, `max-w-site`, `font-mono`, …). The spacing scale lines up 1:1 with Tailwind's defaults (`p-6` = 24px, etc.).
+- The few repeated patterns (buttons) are exported as class-string constants from `ui.tsx` (`btnAmber`, `btnOutline`). Responsive rules use arbitrary variants like `max-[860px]:hidden`.
+- PostCSS (Tailwind + autoprefixer) is wired via `gatsby-plugin-postcss` in `gatsby-config.ts` — there is no separate `postcss.config` file.
 
 ## Before you launch replace placeholders
 

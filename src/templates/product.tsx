@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import type { PageProps } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import { Placeholder } from "../components/ui";
+import { Placeholder, btnAmber } from "../components/ui";
 import { Phone } from "../components/icons";
 import products from "../data/products";
 import site from "../data/site";
@@ -14,6 +14,11 @@ interface ProductPageContext {
   slug: string;
   product?: Product;
 }
+
+const kicker =
+  "flex items-center gap-3 mb-2 font-mono text-[12px] uppercase tracking-[0.24em] text-steel before:content-[''] before:w-[26px] before:h-[2px] before:bg-forge";
+const cardLink =
+  "flex flex-col bg-card border border-line rounded-md overflow-hidden no-underline text-inherit shadow-card transition-[transform,box-shadow] duration-150 hover:-translate-y-[3px] hover:shadow-[0_12px_26px_rgba(30,34,39,0.1)]";
 
 /**
  * Product detail template. Page data comes from gatsby-node.ts pageContext,
@@ -39,31 +44,26 @@ export default function ProductTemplate({
         description={product.summary}
         pathname={`/products/${product.slug}/`}
       />
-      <section className="section">
-        <div className="container">
-          <div className="breadcrumb" style={{ marginBottom: 18 }}>
+      <section className="py-14 max-[560px]:py-10">
+        <div className="max-w-site mx-auto px-6">
+          <div className="font-mono text-[12px] text-steel mb-[18px]">
             <Link to="/">Home</Link> › <Link to="/products/">Products</Link> ›{" "}
-            <b>{product.name}</b>
+            <b className="text-graphite">{product.name}</b>
           </div>
 
-          <div className="pdp">
+          <div className="grid grid-cols-[1.05fr_1fr] gap-10 items-start max-[860px]:grid-cols-1">
             {/* Gallery */}
-            <div className="pdp__gallery">
+            <div className="flex flex-col gap-3">
               <Placeholder
                 label={`${product.category.toLowerCase()} · photo ${active + 1}`}
                 height={300}
               />
-              <div className="pdp__thumbs">
+              <div className="grid grid-cols-3 gap-2">
                 {[0, 1, 2].map((i) => (
                   <button
                     key={i}
                     onClick={() => setActive(i)}
-                    style={{
-                      padding: 0,
-                      border: 0,
-                      background: "none",
-                      cursor: "pointer",
-                    }}
+                    className="p-0 border-0 bg-transparent cursor-pointer"
                     aria-label={`View photo ${i + 1}`}
                   >
                     <Placeholder label={`${i + 1}`} height={64} />
@@ -73,28 +73,33 @@ export default function ProductTemplate({
             </div>
 
             {/* Info */}
-            <div className="pdp__info">
-              <h1 className="h1" style={{ fontSize: "clamp(26px,3.4vw,34px)" }}>
+            <div className="flex flex-col gap-4 sticky top-[90px] max-[860px]:static">
+              <h1 className="text-[clamp(26px,3.4vw,34px)] font-black leading-[1.06] tracking-[-0.8px]">
                 {product.name}
               </h1>
-              <p className="lead">{product.description}</p>
+              <p className="text-steel text-[17px] max-w-[56ch] mb-0">
+                {product.description}
+              </p>
 
               <div>
-                <div className="sec-kicker">Key specs</div>
-                <div className="specs">
+                <div className={kicker}>Key specs</div>
+                <div className="font-mono text-[13px] text-steel leading-[1.9]">
                   {Object.entries(product.specs).map(([k, v]) => (
                     <div key={k}>
-                      <b>{k}</b> {v}
+                      <b className="text-graphite">{k}</b> {v}
                     </div>
                   ))}
                 </div>
               </div>
 
               <div>
-                <div className="sec-kicker">Options</div>
-                <div className="chips">
+                <div className={kicker}>Options</div>
+                <div className="flex gap-2 flex-wrap">
                   {product.options.map((o) => (
-                    <span className="chip" key={o}>
+                    <span
+                      className="text-[13px] font-semibold px-[14px] py-[6px] rounded-pill border border-line bg-card text-steel whitespace-nowrap"
+                      key={o}
+                    >
                       {o}
                     </span>
                   ))}
@@ -102,9 +107,8 @@ export default function ProductTemplate({
               </div>
 
               <a
-                className="btn btn--amber"
+                className={`${btnAmber} mt-[6px]`}
                 href={site.phoneHref}
-                style={{ marginTop: 6 }}
               >
                 <Phone size={16} /> Call to order / enquire
               </a>
@@ -112,22 +116,17 @@ export default function ProductTemplate({
           </div>
 
           {related.length > 0 && (
-            <div style={{ marginTop: 56 }}>
-              <div className="sec-kicker">Related products</div>
-              <h2 className="sec-title">You might also need</h2>
-              <div className="grid grid--3">
+            <div className="mt-[56px]">
+              <div className={kicker}>Related products</div>
+              <h2 className="text-[clamp(24px,3vw,30px)] font-extrabold mt-0 mb-6 tracking-[-0.3px]">
+                You might also need
+              </h2>
+              <div className="grid gap-4 grid-cols-3 max-[860px]:grid-cols-2 max-[560px]:grid-cols-1">
                 {related.map((p) => (
-                  <Link
-                    key={p.slug}
-                    to={`/products/${p.slug}/`}
-                    className="pcard"
-                  >
-                    <Placeholder
-                      label={p.category.toLowerCase()}
-                      height={110}
-                    />
-                    <div className="pcard__body">
-                      <div className="pcard__title">{p.name}</div>
+                  <Link key={p.slug} to={`/products/${p.slug}/`} className={cardLink}>
+                    <Placeholder label={p.category.toLowerCase()} height={110} />
+                    <div className="p-4 flex flex-col gap-2 flex-1">
+                      <div className="text-[18px] font-bold">{p.name}</div>
                     </div>
                   </Link>
                 ))}

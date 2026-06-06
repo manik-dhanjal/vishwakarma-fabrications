@@ -58,21 +58,29 @@ export function Logo({
   const onDark = variant === "dark";
   const markBlock = onDark ? "#272c32" : "#1e2227";
   return (
-    <Link to={to} className="logo" aria-label="Vishwakarma Rolling Shutters  home">
+    <Link
+      to={to}
+      className="flex items-center gap-[10px] no-underline text-inherit"
+      aria-label="Vishwakarma Rolling Shutters  home"
+    >
       <ShutterMark
         size={size}
         block={markBlock}
         slat="#E07A2F"
         rail="#F4F1EA"
       />
-      <span className="logo__word">
+      <span className="flex flex-col leading-none">
         <span
-          className="logo__name"
+          className="font-black text-[17px] tracking-[-0.3px]"
           style={onDark ? { color: "#F4F1EA" } : undefined}
         >
-          VISHWA<b>KARMA</b>
+          VISHWA<b className="text-forge font-black">KARMA</b>
         </span>
-        {showSub && <span className="logo__sub">Rolling Shutters · Amroha</span>}
+        {showSub && (
+          <span className="font-mono text-[10px] tracking-[0.18em] text-iron mt-1 uppercase">
+            Rolling Shutters · Amroha
+          </span>
+        )}
       </span>
     </Link>
   );

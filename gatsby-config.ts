@@ -15,6 +15,13 @@ const config: GatsbyConfig = {
     locale: "en_IN",
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-postcss",
+      options: {
+        // Tailwind picks up ./tailwind.config.ts automatically.
+        postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
+      },
+    },
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-sitemap",

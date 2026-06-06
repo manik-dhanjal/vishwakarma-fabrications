@@ -3,6 +3,12 @@ import { Link } from "gatsby";
 import site from "../data/site";
 import type { Product, Review, Stat } from "../types";
 
+/** Shared button utility strings (kept here so the look stays consistent). */
+export const btnAmber =
+  "inline-flex items-center justify-center gap-2 font-display font-extrabold text-[15px] px-5 py-[11px] rounded-sm border-2 border-transparent no-underline cursor-pointer transition-colors duration-200 bg-forge text-[#1b1b1b] hover:bg-molten hover:text-white";
+export const btnOutline =
+  "inline-flex items-center justify-center gap-2 font-display font-bold text-[15px] px-5 py-[11px] rounded-sm border-2 border-line no-underline cursor-pointer transition-colors duration-200 bg-transparent text-graphite hover:border-forge hover:text-molten";
+
 interface PlaceholderProps {
   label?: string;
   height?: number;
@@ -18,19 +24,29 @@ export function Placeholder({
   shutter = false,
   style,
 }: PlaceholderProps) {
+  const stripes = shutter
+    ? "repeating-linear-gradient(180deg, #dfdbd1 0 9px, #cfcabf 9px 12px)"
+    : "repeating-linear-gradient(45deg, #e8e4da, #e8e4da 11px, #f3f0e8 11px, #f3f0e8 22px)";
   return (
     <div
-      className={`ph${shutter ? " ph--shutter" : ""}`}
-      style={{ height, ...style }}
+      className="relative flex items-center justify-center border border-line rounded-sm text-[#7a756b] min-h-[80px]"
+      style={{ height, background: stripes, ...style }}
     >
-      {label && !shutter && <span className="ph__tag">{label}</span>}
+      {label && !shutter && (
+        <span className="font-mono text-[11px] bg-white border border-line px-[9px] py-[3px] rounded-[5px] text-[#6b665d]">
+          {label}
+        </span>
+      )}
     </div>
   );
 }
 
 export function Stars({ count = 5 }: { count?: number }) {
   return (
-    <div className="review__stars" aria-label={`${count} star rating`}>
+    <div
+      className="text-forge tracking-[2px] text-[16px]"
+      aria-label={`${count} star rating`}
+    >
       {"★".repeat(count)}
     </div>
   );
@@ -45,19 +61,32 @@ export function SectionTitle({
 }) {
   return (
     <>
-      {kicker && <div className="sec-kicker">{kicker}</div>}
-      {title && <h2 className="sec-title">{title}</h2>}
+      {kicker && (
+        <div className="flex items-center gap-3 mb-2 font-mono text-[12px] uppercase tracking-[0.24em] text-steel before:content-[''] before:w-[26px] before:h-[2px] before:bg-forge">
+          {kicker}
+        </div>
+      )}
+      {title && (
+        <h2 className="text-[clamp(24px,3vw,30px)] font-extrabold mt-0 mb-6 tracking-[-0.3px]">
+          {title}
+        </h2>
+      )}
     </>
   );
 }
 
 export function StatBar({ stats = site.stats }: { stats?: Stat[] }) {
   return (
-    <div className="statbar">
+    <div className="grid grid-cols-4 gap-3 max-[860px]:grid-cols-2">
       {stats.map((s) => (
-        <div className="stat" key={s.label}>
-          <span className="stat__value">{s.value}</span>
-          <span className="stat__label">{s.label}</span>
+        <div
+          className="bg-card border border-line rounded-md p-4 text-center shadow-soft"
+          key={s.label}
+        >
+          <span className="block text-[30px] font-black tracking-[-0.5px]">
+            {s.value}
+          </span>
+          <span className="text-[13px] text-steel">{s.label}</span>
         </div>
       ))}
     </div>
@@ -66,12 +95,17 @@ export function StatBar({ stats = site.stats }: { stats?: Stat[] }) {
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <Link to={`/products/${product.slug}/`} className="pcard">
+    <Link
+      to={`/products/${product.slug}/`}
+      className="flex flex-col bg-card border border-line rounded-md overflow-hidden no-underline text-inherit shadow-card transition-[transform,box-shadow] duration-150 hover:-translate-y-[3px] hover:shadow-[0_12px_26px_rgba(30,34,39,0.1)]"
+    >
       <Placeholder label={product.category.toLowerCase()} height={120} />
-      <div className="pcard__body">
-        <div className="pcard__title">{product.name}</div>
-        <div className="pcard__summary">{product.summary}</div>
-        <span className="pcard__link">View details →</span>
+      <div className="p-4 flex flex-col gap-2 flex-1">
+        <div className="text-[18px] font-bold">{product.name}</div>
+        <div className="text-[14px] text-steel">{product.summary}</div>
+        <span className="mt-auto text-molten font-bold text-[14px]">
+          View details →
+        </span>
       </div>
     </Link>
   );
@@ -79,10 +113,10 @@ export function ProductCard({ product }: { product: Product }) {
 
 export function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="review">
+    <div className="bg-card border border-line rounded-md p-5 shadow-soft">
       <Stars count={review.stars} />
-      <p className="review__quote">{review.quote}</p>
-      <div className="review__name"> {review.area}</div>
+      <p className="my-3 text-[15px]">{review.quote}</p>
+      <div className="font-mono text-[12px] text-steel"> {review.area}</div>
     </div>
   );
 }
@@ -95,9 +129,11 @@ export function CtaBand({
   cta?: string;
 }) {
   return (
-    <div className="ctaband">
-      <h2 className="h2">{title}</h2>
-      <a className="btn btn--amber" href={site.phoneHref}>
+    <div className="bg-graphite text-bone rounded-lg px-6 py-10 text-center flex flex-col items-center gap-4">
+      <h2 className="text-[clamp(24px,3.4vw,32px)] font-extrabold tracking-[-0.4px] text-white">
+        {title}
+      </h2>
+      <a className={btnAmber} href={site.phoneHref}>
         {cta}
       </a>
     </div>

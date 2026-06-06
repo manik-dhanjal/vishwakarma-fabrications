@@ -16,6 +16,7 @@
   },
   "include": [
     "./src/**/*",
+    "./tailwind.config.ts",
     "./gatsby-config.ts",
     "./gatsby-node.ts",
     "./gatsby-ssr.tsx",

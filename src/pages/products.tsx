@@ -66,7 +66,7 @@ export default function ProductsPage() {
 
       <section className="py-14 max-[560px]:py-10">
         <div className="max-w-site mx-auto px-6">
-          <CtaBand title="Can't find it? We build custom." cta="☎ Call us" />
+          <CtaBand title="Can't find it? We build custom." />
         </div>
       </section>
     </Layout>

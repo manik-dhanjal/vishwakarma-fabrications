@@ -183,7 +183,7 @@ Graphite background, `--forge` top border (3px). Columns: logo + one-line blurb 
 
 - H1 "Get in touch".
 - **Primary actions first:** big `☎ +91 XXXXX XXXXX` (tap-to-call) and `WhatsApp us` buttons.
-- Address: **T.P. Nagar Chowk, Joya Road, Amroha, Uttar Pradesh 244221**. Hours: **Mon–Sat, 9am–7pm**.
+- Address: **T.P. Nagar Chowk, Joya Road, Amroha, Uttar Pradesh 244221**. Hours: **Daily, 9am–7pm**.
 - **Google Map** embed.
 - **Enquiry form** (Netlify Forms): Name, Phone, Product/service (select), Message, Send. _Desktop:_ details left / form right. _Tablet/mobile:_ stacked, call+WhatsApp above the fold.
 

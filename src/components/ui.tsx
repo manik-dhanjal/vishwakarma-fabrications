@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link } from "gatsby";
 import site from "../data/site";
 import type { Product, Review, Stat } from "../types";
+import { Phone } from "./icons";
 
 /** Shared button utility strings (kept here so the look stays consistent). */
 export const btnAmber =
@@ -123,10 +124,15 @@ export function ReviewCard({ review }: { review: Review }) {
 
 export function CtaBand({
   title,
-  cta = "☎ " + site.phoneDisplay,
+  cta = (
+    <>
+      {" "}
+      <Phone /> {site.phoneDisplay}
+    </>
+  ),
 }: {
   title: string;
-  cta?: string;
+  cta?: string | React.ReactNode;
 }) {
   return (
     <div className="bg-graphite text-bone rounded-lg px-6 py-10 text-center flex flex-col items-center gap-4">

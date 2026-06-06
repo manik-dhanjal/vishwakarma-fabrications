@@ -6,6 +6,7 @@ import React from "react";
  */
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
+    <link key="favicon" rel="icon" type="image/svg+xml" href="/favicon.svg" />,
     <link key="gf-pre1" rel="preconnect" href="https://fonts.googleapis.com" />,
     <link
       key="gf-pre2"

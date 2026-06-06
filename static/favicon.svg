@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="Vishwakarma Fabrications">
+  <rect x="0" y="0" width="48" height="48" rx="10" fill="#1E2227"/>
+  <g fill="#E07A2F">
+    <rect x="9" y="13" width="30" height="3.2" rx="1.6"/>
+    <rect x="9" y="18.5" width="30" height="3.2" rx="1.6"/>
+    <rect x="9" y="24" width="30" height="3.2" rx="1.6"/>
+    <rect x="9" y="29.5" width="30" height="3.2" rx="1.6"/>
+  </g>
+  <rect x="9" y="35.5" width="30" height="3.4" rx="1.7" fill="#F4F1EA"/>
+</svg>

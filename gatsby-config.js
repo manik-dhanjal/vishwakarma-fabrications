@@ -8,7 +8,7 @@ module.exports = {
     title: "Vishwakarma Fabrications",
     titleTemplate: "%s | Vishwakarma Fabrications",
     description:
-      "Rolling shutter manufacturers in Amroha, U.P. Manual, motorised, perforated & grill shutters, collapsible gates, steel fabrication and repair. 30+ years of experience.",
+      "Rolling shutter manufacturers in Amroha, U.P. Manual, motorised, perforated & grill shutters, collapsible gates and repair. 35+ years of experience.",
     siteUrl: "https://vishwakarmafabrications.in",
     locale: "en_IN",
   },

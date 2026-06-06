@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "gatsby";
-import { ArrowRight } from "./icons";
 import site from "../data/site";
 
 /* Striped placeholder standing in for a real photo. Swap for <img>/GatsbyImage

@@ -81,32 +81,8 @@
     ],
     "related": [
       "manual-rolling-shutters",
-      "steel-fabrication",
+      "motorised-remote-shutters",
       "perforated-grill-shutters"
-    ]
-  },
-  {
-    "slug": "steel-fabrication",
-    "name": "Steel Fabrication",
-    "category": "Fabrication",
-    "summary": "MS doors, windows, railings, gratings and custom structural work.",
-    "description": "Beyond shutters, our workshop takes on general steel fabrication  MS doors and windows, railings, gratings, sheds and custom structural jobs. CNC cutting and skilled welding mean clean, accurate work sized to your drawings or site.",
-    "specs": {
-      "Scope": "Doors, windows, railings, gratings, sheds",
-      "Cutting": "CNC plasma / shear",
-      "Joining": "MIG / arc welding",
-      "Finish": "Primer / powder-coat"
-    },
-    "options": [
-      "MS doors & windows",
-      "Railings",
-      "Gratings",
-      "Custom structural"
-    ],
-    "related": [
-      "collapsible-sliding-gates",
-      "manual-rolling-shutters",
-      "repair-maintenance"
     ]
   },
   {
@@ -130,7 +106,7 @@
     "related": [
       "motorised-remote-shutters",
       "manual-rolling-shutters",
-      "steel-fabrication"
+      "collapsible-sliding-gates"
     ]
   }
 ]

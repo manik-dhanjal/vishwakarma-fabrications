@@ -20,8 +20,8 @@ export default function Footer() {
                 maxWidth: 320,
               }}
             >
-              Rolling shutters, gates and steel fabrication custom-built and
-              fitted across Amroha and nearby for 30+ years.
+              Rolling shutters and gates custom-built and fitted across Amroha
+              and nearby for 35+ years.
             </p>
             <div
               className="mobilemenu__social"
@@ -76,6 +76,16 @@ export default function Footer() {
         <div className="footer__legal">
           © {new Date().getFullYear()} {site.name} · Amroha, Uttar Pradesh · All
           rights reserved.
+          <br />
+          Built & designed by{" "}
+          <a
+            href="https://manikdhanjal.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Manik Dhanjal
+          </a>
+          .
         </div>
       </div>
     </footer>

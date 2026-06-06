@@ -22,7 +22,7 @@ export default function ProductsPage() {
   return (
     <Layout>
       <Seo
-        title="Products  Rolling Shutters, Gates & Fabrication"
+        title="Products  Rolling Shutters & Gates"
         pathname="/products/"
       />
       <section className="section">
@@ -31,9 +31,8 @@ export default function ProductsPage() {
             Our Products
           </h1>
           <p className="lead" style={{ marginTop: 12 }}>
-            All types of rolling shutters, gates and steel fabrication every job
-            custom-built to your opening. Can't see what you need? We build
-            custom.
+            All types of rolling shutters and gates every job custom-built to
+            your opening. Can't see what you need? We build custom.
           </p>
 
           <div

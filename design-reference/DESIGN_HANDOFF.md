@@ -183,7 +183,7 @@ Graphite background, `--forge` top border (3px). Columns: logo + one-line blurb 
 
 - H1 "Get in touch".
 - **Primary actions first:** big `☎ +91 XXXXX XXXXX` (tap-to-call) and `WhatsApp us` buttons.
-- Address: **T.P. Nagar Churaha, Joya Road, Amroha, Uttar Pradesh 244221**. Hours: **Mon–Sat, 9am–7pm**.
+- Address: **T.P. Nagar Chowk, Joya Road, Amroha, Uttar Pradesh 244221**. Hours: **Mon–Sat, 9am–7pm**.
 - **Google Map** embed.
 - **Enquiry form** (Netlify Forms): Name, Phone, Product/service (select), Message, Send. _Desktop:_ details left / form right. _Tablet/mobile:_ stacked, call+WhatsApp above the fold.
 
@@ -248,7 +248,7 @@ Reviews can be a small JSON array too: `{ stars, quote, name, area }`.
 ## SEO (high priority this is a LOCAL business)
 
 - Per-page `<title>` / meta description via `react-helmet` (e.g. "Rolling Shutter Manufacturers in Amroha | Vishwakarma Fabrications").
-- **`LocalBusiness` JSON-LD** structured data with name, address (T.P. Nagar Churaha, Joya Road, Amroha, UP 244221), phone, geo, opening hours, and product/service list. This drives local "rolling shutter near me" results.
+- **`LocalBusiness` JSON-LD** structured data with name, address (T.P. Nagar Chowk, Joya Road, Amroha, UP 244221), phone, geo, opening hours, and product/service list. This drives local "rolling shutter near me" results.
 - `gatsby-plugin-sitemap`, `gatsby-plugin-manifest` (PWA icon from the Shutter Mark), `gatsby-plugin-image` + `gatsby-plugin-sharp` for fast images, robots.txt.
 - Semantic headings, descriptive `alt` text, `tel:` links.
 - After launch: set up a **Google Business Profile** and link the site (not a code task, but note it for the client).

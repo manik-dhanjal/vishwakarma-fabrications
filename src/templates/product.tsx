@@ -1,12 +1,16 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import type { PageProps } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { Placeholder, btnAmber } from "../components/ui";
 import { Phone } from "../components/icons";
-import { trackPhoneCall } from "../utils/analytics";
+import {
+  trackPhoneCall,
+  trackViewItem,
+  trackProductCardClick,
+} from "../utils/analytics";
 import products from "../data/products";
 import site from "../data/site";
 import type { Product } from "../types";
@@ -32,6 +36,13 @@ export default function ProductTemplate({
     pageContext.product ||
     products.find((p) => p.slug === pageContext.slug);
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    if (product) {
+      trackViewItem({ name: product.name, category: product.category });
+    }
+  }, [product]);
+
   if (!product) return null;
 
   const related = (product.related || [])
@@ -125,7 +136,12 @@ export default function ProductTemplate({
               </h2>
               <div className="grid gap-4 grid-cols-3 max-[860px]:grid-cols-2 max-[560px]:grid-cols-1">
                 {related.map((p) => (
-                  <Link key={p.slug} to={`/products/${p.slug}/`} className={cardLink}>
+                  <Link
+                    key={p.slug}
+                    to={`/products/${p.slug}/`}
+                    onClick={() => trackProductCardClick(p.name)}
+                    className={cardLink}
+                  >
                     <Placeholder label={p.category.toLowerCase()} height={110} />
                     <div className="p-4 flex flex-col gap-2 flex-1">
                       <div className="text-[18px] font-bold">{p.name}</div>

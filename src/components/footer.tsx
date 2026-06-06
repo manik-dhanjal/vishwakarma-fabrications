@@ -2,7 +2,13 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { Logo } from "./brand";
 import { Phone, Mail, Whatsapp, Instagram, Facebook, MapPin } from "./icons";
-import { trackPhoneCall, trackWhatsApp } from "../utils/analytics";
+import {
+  trackPhoneCall,
+  trackWhatsApp,
+  trackEmail,
+  trackDirections,
+  trackSocialClick,
+} from "../utils/analytics";
 import products from "../data/products";
 import site from "../data/site";
 
@@ -38,16 +44,36 @@ export default function Footer() {
               >
                 <Whatsapp size={20} />
               </a>
-              <a href={site.emailHref} aria-label="Email" className={socialLink}>
+              <a
+                href={site.emailHref}
+                aria-label="Email"
+                className={socialLink}
+                onClick={() => trackEmail("footer_social")}
+              >
                 <Mail size={20} />
               </a>
-              <a href={site.social.instagram} aria-label="Instagram" className={socialLink}>
+              <a
+                href={site.social.instagram}
+                aria-label="Instagram"
+                className={socialLink}
+                onClick={() => trackSocialClick("instagram", "footer")}
+              >
                 <Instagram size={20} />
               </a>
-              <a href={site.social.facebook} aria-label="Facebook" className={socialLink}>
+              <a
+                href={site.social.facebook}
+                aria-label="Facebook"
+                className={socialLink}
+                onClick={() => trackSocialClick("facebook", "footer")}
+              >
                 <Facebook size={20} />
               </a>
-              <a href={site.address.mapHref} aria-label="Location" className={socialLink}>
+              <a
+                href={site.address.mapHref}
+                aria-label="Location"
+                className={socialLink}
+                onClick={() => trackDirections("footer_social")}
+              >
                 <MapPin size={20} />
               </a>
             </div>
@@ -74,10 +100,18 @@ export default function Footer() {
               >
                 {site.phoneDisplay}
               </a>
-              <a href={site.emailHref} className={footerLink}>
+              <a
+                href={site.emailHref}
+                className={footerLink}
+                onClick={() => trackEmail("footer")}
+              >
                 {site.email}
               </a>
-              <a href={site.address.mapHref} className={footerLink}>
+              <a
+                href={site.address.mapHref}
+                className={footerLink}
+                onClick={() => trackDirections("footer")}
+              >
                 {site.address.line1}
                 <br />
                 {site.address.line2}

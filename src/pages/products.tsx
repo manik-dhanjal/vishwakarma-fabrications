@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { ProductCard, CtaBand } from "../components/ui";
+import { trackProductFilter } from "../utils/analytics";
 import products from "../data/products";
 
 const CATEGORIES = [
@@ -48,7 +49,10 @@ export default function ProductsPage() {
                     ? "bg-forge text-[#1b1b1b] border-forge"
                     : "bg-card text-steel border-line"
                 }`}
-                onClick={() => setFilter(c)}
+                onClick={() => {
+                  setFilter(c);
+                  trackProductFilter(c);
+                }}
                 aria-pressed={filter === c}
               >
                 {c}

@@ -72,6 +72,7 @@ gatsby-config.ts · gatsby-node.ts · gatsby-browser.ts · gatsby-ssr.tsx · net
   - `phone_call_click` — every `tel:` link (header, hero, CTA band, product page, contact, mobile menu, footer); a `source` param says where.
   - `whatsapp_click` — every `wa.me` link.
   - `generate_lead` — enquiry form submitted (`contact.tsx`); sends the chosen `product` only, never name/phone/message.
+- **Diagnostic events (funnel insight, not conversions):** `view_item` (product detail viewed), `select_product_filter` (category chip), `product_card_click`, `get_directions` (map/location link), `email_click` (`mailto:`), `mobile_menu_open`, `social_click` (Instagram/Facebook).
 - GA4 also gives page views, geography, acquisition/source and device data automatically. Keep event params **PII-free**.
 
 ## Netlify deploy

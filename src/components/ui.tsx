@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import site from "../data/site";
 import type { Product, Review, Stat } from "../types";
 import { Phone } from "./icons";
-import { trackPhoneCall } from "../utils/analytics";
+import { trackPhoneCall, trackProductCardClick } from "../utils/analytics";
 
 /** Shared button utility strings (kept here so the look stays consistent). */
 export const btnAmber =
@@ -99,6 +99,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       to={`/products/${product.slug}/`}
+      onClick={() => trackProductCardClick(product.name)}
       className="flex flex-col bg-card border border-line rounded-md overflow-hidden no-underline text-inherit shadow-card transition-[transform,box-shadow] duration-150 hover:-translate-y-[3px] hover:shadow-[0_12px_26px_rgba(30,34,39,0.1)]"
     >
       <Placeholder label={product.category.toLowerCase()} height={120} />

@@ -4,7 +4,12 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { Placeholder, btnAmber, btnOutline } from "../components/ui";
 import { Phone, Whatsapp, Mail, MapPin, Clock } from "../components/icons";
-import { trackPhoneCall, trackWhatsApp, trackLead } from "../utils/analytics";
+import {
+  trackPhoneCall,
+  trackWhatsApp,
+  trackLead,
+  trackEmail,
+} from "../utils/analytics";
 import products from "../data/products";
 import site from "../data/site";
 
@@ -132,7 +137,11 @@ export default function ContactPage() {
             </div>
             <div className="flex gap-[10px] items-center text-steel">
               <Mail size={18} />
-              <a href={site.emailHref} className="text-steel">
+              <a
+                href={site.emailHref}
+                className="text-steel"
+                onClick={() => trackEmail("contact")}
+              >
                 {site.email}
               </a>
             </div>

@@ -4,7 +4,14 @@ import { Link } from "gatsby";
 import { Logo } from "./brand";
 import { Menu, Close, Phone, Mail, Whatsapp, Instagram, Facebook, MapPin } from "./icons";
 import { btnAmber, btnOutline } from "./ui";
-import { trackPhoneCall, trackWhatsApp } from "../utils/analytics";
+import {
+  trackPhoneCall,
+  trackWhatsApp,
+  trackEmail,
+  trackDirections,
+  trackSocialClick,
+  trackMobileMenuOpen,
+} from "../utils/analytics";
 import site from "../data/site";
 
 const navLink =
@@ -89,24 +96,18 @@ function MobileMenu({ open, onClose }: MobileMenuProps) {
         </div>
         <div className="flex items-center justify-center gap-[26px]">
           {[
-            { href: site.phoneHref, label: "Call", icon: <Phone /> },
-            { href: site.emailHref, label: "Email", icon: <Mail /> },
-            { href: site.whatsappHref, label: "WhatsApp", icon: <Whatsapp /> },
-            { href: site.social.instagram, label: "Instagram", icon: <Instagram /> },
-            { href: site.social.facebook, label: "Facebook", icon: <Facebook /> },
-            { href: site.address.mapHref, label: "Location", icon: <MapPin /> },
+            { href: site.phoneHref, label: "Call", icon: <Phone />, track: () => trackPhoneCall("mobile_menu_social") },
+            { href: site.emailHref, label: "Email", icon: <Mail />, track: () => trackEmail("mobile_menu_social") },
+            { href: site.whatsappHref, label: "WhatsApp", icon: <Whatsapp />, track: () => trackWhatsApp("mobile_menu_social") },
+            { href: site.social.instagram, label: "Instagram", icon: <Instagram />, track: () => trackSocialClick("instagram", "mobile_menu_social") },
+            { href: site.social.facebook, label: "Facebook", icon: <Facebook />, track: () => trackSocialClick("facebook", "mobile_menu_social") },
+            { href: site.address.mapHref, label: "Location", icon: <MapPin />, track: () => trackDirections("mobile_menu_social") },
           ].map((s) => (
             <a
               key={s.label}
               href={s.href}
               aria-label={s.label}
-              onClick={
-                s.href === site.phoneHref
-                  ? () => trackPhoneCall("mobile_menu_social")
-                  : s.href === site.whatsappHref
-                    ? () => trackWhatsApp("mobile_menu_social")
-                    : undefined
-              }
+              onClick={s.track}
               className="text-iron flex transition-[color,transform] duration-200 hover:text-forge hover:-translate-y-0.5"
             >
               {s.icon}
@@ -145,7 +146,10 @@ export default function Header() {
         </a>
         <button
           className="hidden max-[860px]:flex ml-auto w-11 h-11 items-center justify-center rounded-[11px] text-bone cursor-pointer bg-white/[0.06] border border-white/[0.08]"
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setOpen(true);
+            trackMobileMenuOpen();
+          }}
           aria-label="Open menu"
         >
           <Menu />

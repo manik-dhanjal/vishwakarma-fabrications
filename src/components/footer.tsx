@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { Logo } from "./brand";
 import { Phone, Mail, Whatsapp, Instagram, Facebook, MapPin } from "./icons";
+import { trackPhoneCall, trackWhatsApp } from "../utils/analytics";
 import products from "../data/products";
 import site from "../data/site";
 
@@ -21,10 +22,20 @@ export default function Footer() {
               and nearby for 35+ years.
             </p>
             <div className="flex items-center gap-[26px] justify-start mt-[18px]">
-              <a href={site.phoneHref} aria-label="Call" className={socialLink}>
+              <a
+                href={site.phoneHref}
+                aria-label="Call"
+                className={socialLink}
+                onClick={() => trackPhoneCall("footer_social")}
+              >
                 <Phone size={20} />
               </a>
-              <a href={site.whatsappHref} aria-label="WhatsApp" className={socialLink}>
+              <a
+                href={site.whatsappHref}
+                aria-label="WhatsApp"
+                className={socialLink}
+                onClick={() => trackWhatsApp("footer_social")}
+              >
                 <Whatsapp size={20} />
               </a>
               <a href={site.emailHref} aria-label="Email" className={socialLink}>
@@ -56,7 +67,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white text-[14px] mt-0 mb-3">Contact</h4>
             <div className="flex flex-col gap-2">
-              <a href={site.phoneHref} className={footerLink}>
+              <a
+                href={site.phoneHref}
+                className={footerLink}
+                onClick={() => trackPhoneCall("footer")}
+              >
                 {site.phoneDisplay}
               </a>
               <a href={site.emailHref} className={footerLink}>

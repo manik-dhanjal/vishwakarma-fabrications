@@ -5,6 +5,24 @@
  */
 import type { GatsbyConfig } from "gatsby";
 
+// GA4 measurement id (e.g. G-XXXXXXXXXX). Set GATSBY_GA_MEASUREMENT_ID in the
+// environment (Netlify env vars / .env). When unset, analytics is simply off.
+const gaId = process.env.GATSBY_GA_MEASUREMENT_ID;
+
+const gaPlugin = gaId
+  ? [
+      {
+        resolve: "gatsby-plugin-google-gtag",
+        options: {
+          trackingIds: [gaId],
+          gtagConfig: { anonymize_ip: true },
+          // head:true loads gtag in <head>; respectDNT honours Do-Not-Track.
+          pluginConfig: { head: true, respectDNT: true },
+        },
+      },
+    ]
+  : [];
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: "Vishwakarma Rolling Shutters",
@@ -25,6 +43,7 @@ const config: GatsbyConfig = {
       resolve: "gatsby-plugin-sitemap",
       options: { output: "/sitemap" },
     },
+    ...gaPlugin,
     // When you add a brand icon, install gatsby-plugin-manifest and point it at
     // a 512px PNG export of the Shutter Mark (see design-reference/).
   ],

@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import site from "../data/site";
 import type { Product, Review, Stat } from "../types";
 import { Phone } from "./icons";
+import { trackPhoneCall } from "../utils/analytics";
 
 /** Shared button utility strings (kept here so the look stays consistent). */
 export const btnAmber =
@@ -139,7 +140,11 @@ export function CtaBand({
       <h2 className="text-[clamp(24px,3.4vw,32px)] font-extrabold tracking-[-0.4px] text-white">
         {title}
       </h2>
-      <a className={btnAmber} href={site.phoneHref}>
+      <a
+        className={btnAmber}
+        href={site.phoneHref}
+        onClick={() => trackPhoneCall("cta_band")}
+      >
         {cta}
       </a>
     </div>

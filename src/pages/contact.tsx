@@ -4,6 +4,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { Placeholder, btnAmber, btnOutline } from "../components/ui";
 import { Phone, Whatsapp, Mail, MapPin, Clock } from "../components/icons";
+import { trackPhoneCall, trackWhatsApp, trackLead } from "../utils/analytics";
 import products from "../data/products";
 import site from "../data/site";
 
@@ -65,7 +66,11 @@ export default function ContactPage() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "enquiry", ...values }),
     })
-      .then(() => setStatus("success"))
+      .then(() => {
+        setStatus("success");
+        // Key conversion. Send the chosen product (not name/phone/message).
+        trackLead({ product: values.product || "unspecified" });
+      })
       .catch(() => setStatus("error"));
   };
 
@@ -103,6 +108,7 @@ export default function ContactPage() {
             <a
               className={`${btnAmber} w-full`}
               href={site.phoneHref}
+              onClick={() => trackPhoneCall("contact")}
               style={{ justifyContent: "flex-start" }}
             >
               <Phone size={18} /> {site.phoneDisplay}
@@ -110,6 +116,7 @@ export default function ContactPage() {
             <a
               className={`${btnOutline} w-full`}
               href={site.whatsappHref}
+              onClick={() => trackWhatsApp("contact")}
               style={{ justifyContent: "flex-start" }}
             >
               <Whatsapp size={18} /> WhatsApp us

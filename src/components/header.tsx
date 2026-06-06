@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import { Logo } from "./brand";
 import { Menu, Close, Phone, Mail, Whatsapp, Instagram, Facebook, MapPin } from "./icons";
 import { btnAmber, btnOutline } from "./ui";
+import { trackPhoneCall, trackWhatsApp } from "../utils/analytics";
 import site from "../data/site";
 
 const navLink =
@@ -70,12 +71,17 @@ function MobileMenu({ open, onClose }: MobileMenuProps) {
 
       <div className="px-6 pb-10 relative z-[2]">
         <div className="flex gap-[10px] mb-6">
-          <a className={`${btnAmber} flex-1`} href={site.phoneHref}>
+          <a
+            className={`${btnAmber} flex-1`}
+            href={site.phoneHref}
+            onClick={() => trackPhoneCall("mobile_menu")}
+          >
             <Phone size={18} /> Call now
           </a>
           <a
             className={`${btnOutline} flex-1`}
             href={site.whatsappHref}
+            onClick={() => trackWhatsApp("mobile_menu")}
             style={{ color: "#f4f1ea", borderColor: "rgba(255,255,255,0.16)" }}
           >
             WhatsApp
@@ -94,6 +100,13 @@ function MobileMenu({ open, onClose }: MobileMenuProps) {
               key={s.label}
               href={s.href}
               aria-label={s.label}
+              onClick={
+                s.href === site.phoneHref
+                  ? () => trackPhoneCall("mobile_menu_social")
+                  : s.href === site.whatsappHref
+                    ? () => trackWhatsApp("mobile_menu_social")
+                    : undefined
+              }
               className="text-iron flex transition-[color,transform] duration-200 hover:text-forge hover:-translate-y-0.5"
             >
               {s.icon}
@@ -126,6 +139,7 @@ export default function Header() {
         <a
           className="inline-flex items-center gap-2 bg-forge text-[#1b1b1b] font-extrabold text-[14px] px-[15px] py-[9px] rounded-sm no-underline hover:bg-molten hover:text-white max-[860px]:hidden"
           href={site.phoneHref}
+          onClick={() => trackPhoneCall("header")}
         >
           <Phone size={16} /> {site.phoneDisplay}
         </a>

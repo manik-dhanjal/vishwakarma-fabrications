@@ -64,6 +64,16 @@ gatsby-config.ts · gatsby-node.ts · gatsby-browser.ts · gatsby-ssr.tsx · net
 - **Type:** Archivo (display/body) + JetBrains Mono (specs/labels), loaded in `gatsby-ssr.tsx`.
 - **Logo:** `ShutterMark` SVG component recolors for dark backgrounds.
 
+## Analytics (GA4)
+
+- **Setup:** create a GA4 property, then set `GATSBY_GA_MEASUREMENT_ID=G-XXXXXXXXXX` in the environment (Netlify → Site settings → Environment variables, and/or a local `.env` file). When the variable is **unset, analytics is disabled** — `gatsby-plugin-google-gtag` is only added in `gatsby-config.ts` when an id is present, so dev builds stay clean.
+- **Helper:** `src/utils/analytics.ts` exposes `trackEvent(name, params)` (a safe no-op when gtag isn't loaded) plus three lead helpers.
+- **Lead conversions (mark these as Key events in GA4):**
+  - `phone_call_click` — every `tel:` link (header, hero, CTA band, product page, contact, mobile menu, footer); a `source` param says where.
+  - `whatsapp_click` — every `wa.me` link.
+  - `generate_lead` — enquiry form submitted (`contact.tsx`); sends the chosen `product` only, never name/phone/message.
+- GA4 also gives page views, geography, acquisition/source and device data automatically. Keep event params **PII-free**.
+
 ## Netlify deploy
 
 1. Push to GitHub.

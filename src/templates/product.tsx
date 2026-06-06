@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { Placeholder, btnAmber } from "../components/ui";
 import { Phone } from "../components/icons";
+import { trackPhoneCall } from "../utils/analytics";
 import products from "../data/products";
 import site from "../data/site";
 import type { Product } from "../types";
@@ -109,6 +110,7 @@ export default function ProductTemplate({
               <a
                 className={`${btnAmber} mt-[6px]`}
                 href={site.phoneHref}
+                onClick={() => trackPhoneCall("product_detail")}
               >
                 <Phone size={16} /> Call to order / enquire
               </a>

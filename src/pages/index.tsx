@@ -13,6 +13,7 @@ import {
   btnOutline,
 } from "../components/ui";
 import { Phone } from "../components/icons";
+import { trackPhoneCall } from "../utils/analytics";
 import products from "../data/products";
 import reviews from "../data/reviews";
 import site from "../data/site";
@@ -40,7 +41,11 @@ export default function HomePage() {
               your exact opening and fitted by our own team in Amroha.
             </p>
             <div className="flex gap-3 flex-wrap mt-2">
-              <a className={btnAmber} href={site.phoneHref}>
+              <a
+                className={btnAmber}
+                href={site.phoneHref}
+                onClick={() => trackPhoneCall("hero")}
+              >
                 <Phone size={16} /> Call for a quote
               </a>
               <Link className={btnOutline} to="/products/">

@@ -9,6 +9,8 @@
  *   - generate_lead      (enquiry form submitted)
  * Keep event params PII-free — never send a visitor's name/phone/message.
  */
+import { getStoredConsent } from "./consent";
+
 type GtagParams = Record<string, string | number | boolean | undefined>;
 
 type GtagFn = (command: string, ...args: unknown[]) => void;
@@ -21,6 +23,8 @@ declare global {
 
 export function trackEvent(name: string, params: GtagParams = {}): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  // Honour the consent banner: only emit events once the visitor opts in.
+  if (getStoredConsent() !== "granted") return;
   window.gtag("event", name, params);
 }
 

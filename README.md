@@ -74,6 +74,7 @@ gatsby-config.ts · gatsby-node.ts · gatsby-browser.ts · gatsby-ssr.tsx · net
   - `generate_lead` — enquiry form submitted (`contact.tsx`); sends the chosen `product` only, never name/phone/message.
 - **Diagnostic events (funnel insight, not conversions):** `view_item` (product detail viewed), `select_product_filter` (category chip), `product_card_click`, `get_directions` (map/location link), `email_click` (`mailto:`), `mobile_menu_open`, `social_click` (Instagram/Facebook).
 - GA4 also gives page views, geography, acquisition/source and device data automatically. Keep event params **PII-free**.
+- **Consent (DPDP/GDPR):** a consent banner (`src/components/consent-banner.tsx`) gates analytics via **Google Consent Mode v2**. `analytics_storage` defaults to `denied` (set in `gatsby-ssr.tsx` before gtag loads); accepting flips it to `granted` and stores the choice in `localStorage` (`va_consent`). Custom `trackEvent`s are also suppressed until consent is granted. The banner only appears when `GATSBY_GA_MEASUREMENT_ID` is set.
 
 ## Netlify deploy
 

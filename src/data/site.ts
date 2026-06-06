@@ -13,7 +13,7 @@ const site: SiteData = {
   founded: 1990,
   owners: [
     { name: "Vikram Singh Dhanjal", role: "Founder" },
-    { name: "Raju Singh Dhanjal", role: "Owner" },
+    { name: "Gurubachan Singh Dhanjal (Raju)", role: "Owner" },
   ],
 
   // ---- Contact (REPLACE placeholders) ----

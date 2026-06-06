@@ -72,10 +72,10 @@ export default function AboutPage() {
             ))}
           </div>
           <p className="text-steel text-[16px] max-w-[620px] mt-[18px]">
-            The shop is owned and run by Raju Singh Dhanjal and Vikram Singh
-            Dhanjal, who lead the team and personally oversee measuring,
-            building and fitting so every shutter meets the standard the family
-            name has stood for since {site.founded}.
+            The shop is owned and run by Gurubachan Singh Dhanjal (Raju) and
+            Vikram Singh Dhanjal, who lead the team and personally oversee
+            measuring, building and fitting so every shutter meets the standard
+            the family name has stood for since {site.founded}.
           </p>
         </div>
       </section>

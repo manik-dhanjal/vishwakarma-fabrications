@@ -17,6 +17,7 @@ import { trackPhoneCall } from "../utils/analytics";
 import products from "../data/products";
 import reviews from "../data/reviews";
 import site from "../data/site";
+import landingPhoto from "../../static/landing-photo.png";
 
 const grid3 =
   "grid gap-4 grid-cols-3 max-[860px]:grid-cols-2 max-[560px]:grid-cols-1";
@@ -53,11 +54,17 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <Placeholder
+          <img
+            src={landingPhoto}
+            alt="hero · finished shutter / shopfront"
+            height={300}
+            className="rounded-md"
+          />
+          {/* <Placeholder
             label="hero · finished shutter / shopfront"
             height={300}
             shutter
-          />
+          /> */}
         </div>
       </section>
 

@@ -17,7 +17,7 @@ export default function AboutPage() {
   return (
     <Layout>
       <Seo
-        title="About  35+ Years Building Shutters in Amroha"
+        title="About  50+ Years Building Shutters in Amroha"
         pathname="/about/"
       />
 
@@ -27,7 +27,7 @@ export default function AboutPage() {
             Our story
           </div>
           <h1 className="text-[clamp(30px,5vw,52px)] font-black leading-[1.06] tracking-[-0.8px] max-w-[640px]">
-            Building shutters in Amroha for 35+ years.
+            Building shutters in Amroha for 50+ years.
           </h1>
           <p className="text-steel text-[17px] max-w-[56ch] mb-0">
             A family business, run across three generations.

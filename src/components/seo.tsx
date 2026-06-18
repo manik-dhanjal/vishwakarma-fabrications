@@ -64,6 +64,8 @@ export default function Seo({ title, description, pathname, image }: SeoProps) {
   const imageUrl = imagePath.startsWith("http")
     ? imagePath
     : meta.siteUrl + imagePath;
+  // Dimension/type hints are only accurate for the known default image.
+  const isDefaultImage = imagePath === DEFAULT_OG_IMAGE;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -105,9 +107,15 @@ export default function Seo({ title, description, pathname, image }: SeoProps) {
       <meta property="og:locale" content={meta.locale} />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:image:secure_url" content={imageUrl} />
-      <meta property="og:image:type" content={OG_IMAGE_TYPE} />
-      <meta property="og:image:width" content={OG_IMAGE_WIDTH} />
-      <meta property="og:image:height" content={OG_IMAGE_HEIGHT} />
+      {isDefaultImage && (
+        <meta property="og:image:type" content={OG_IMAGE_TYPE} />
+      )}
+      {isDefaultImage && (
+        <meta property="og:image:width" content={OG_IMAGE_WIDTH} />
+      )}
+      {isDefaultImage && (
+        <meta property="og:image:height" content={OG_IMAGE_HEIGHT} />
+      )}
       <meta property="og:image:alt" content={pageTitle} />
 
       {/* Twitter / X card. */}

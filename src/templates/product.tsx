@@ -45,6 +45,8 @@ export default function ProductTemplate({
 
   if (!product) return null;
 
+  const images = product.images || [];
+
   const related = (product.related || [])
     .map((slug) => products.find((p) => p.slug === slug))
     .filter((p): p is Product => Boolean(p));
@@ -55,6 +57,7 @@ export default function ProductTemplate({
         title={product.name}
         description={product.summary}
         pathname={`/products/${product.slug}/`}
+        image={product.images?.[0]}
       />
       <section className="py-14 max-[560px]:py-10">
         <div className="max-w-site mx-auto px-6">
@@ -66,19 +69,42 @@ export default function ProductTemplate({
           <div className="grid grid-cols-[1.05fr_1fr] gap-10 items-start max-[860px]:grid-cols-1">
             {/* Gallery */}
             <div className="flex flex-col gap-3">
-              <Placeholder
-                label={`${product.category.toLowerCase()} · photo ${active + 1}`}
-                height={300}
-              />
+              {images.length > 0 ? (
+                <img
+                  src={images[active]}
+                  alt={`${product.name}  photo ${active + 1}`}
+                  height={300}
+                  className="h-[300px] w-full object-cover rounded-sm border border-line"
+                />
+              ) : (
+                <Placeholder
+                  label={`${product.category.toLowerCase()} · photo ${active + 1}`}
+                  height={300}
+                />
+              )}
               <div className="grid grid-cols-3 gap-2">
-                {[0, 1, 2].map((i) => (
+                {(images.length > 0 ? images : [0, 1, 2]).map((img, i) => (
                   <button
                     key={i}
                     onClick={() => setActive(i)}
-                    className="p-0 border-0 bg-transparent cursor-pointer"
+                    className={`p-0 border-2 rounded-sm overflow-hidden bg-transparent cursor-pointer ${
+                      images.length > 0 && i === active
+                        ? "border-forge"
+                        : "border-transparent"
+                    }`}
                     aria-label={`View photo ${i + 1}`}
                   >
-                    <Placeholder label={`${i + 1}`} height={64} />
+                    {images.length > 0 ? (
+                      <img
+                        src={img as string}
+                        alt={`${product.name}  thumbnail ${i + 1}`}
+                        height={64}
+                        loading="lazy"
+                        className="h-[64px] w-full object-cover"
+                      />
+                    ) : (
+                      <Placeholder label={`${i + 1}`} height={64} />
+                    )}
                   </button>
                 ))}
               </div>
@@ -142,7 +168,17 @@ export default function ProductTemplate({
                     onClick={() => trackProductCardClick(p.name)}
                     className={cardLink}
                   >
-                    <Placeholder label={p.category.toLowerCase()} height={110} />
+                    {p.images?.[0] ? (
+                      <img
+                        src={p.images[0]}
+                        alt={p.name}
+                        height={110}
+                        loading="lazy"
+                        className="h-[110px] w-full object-cover"
+                      />
+                    ) : (
+                      <Placeholder label={p.category.toLowerCase()} height={110} />
+                    )}
                     <div className="p-4 flex flex-col gap-2 flex-1">
                       <div className="text-[18px] font-bold">{p.name}</div>
                     </div>

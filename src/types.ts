@@ -11,6 +11,8 @@ export interface Product {
   specs: Record<string, string>;
   options: string[];
   related?: string[];
+  /** Photo paths served from /static (e.g. "/products/manual-1.jpg"). First is the lead image. */
+  images?: string[];
 }
 
 export interface Review {

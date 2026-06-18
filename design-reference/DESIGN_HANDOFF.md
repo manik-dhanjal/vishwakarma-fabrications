@@ -2,7 +2,7 @@
 
 ## Overview
 
-A marketing/brochure website for **Vishwakarma Fabrications**, a rolling-shutter and steel-fabrication workshop in Amroha, Uttar Pradesh, India (30+ years in business). The site's #1 job is **lead generation by phone** make it dead simple for shop owners, factories, homeowners and institutions to see the product range and call/WhatsApp for a quote.
+A marketing/brochure website for **Vishwakarma Fabrications**, a rolling-shutter and steel-fabrication workshop in Amroha, Uttar Pradesh, India (35+ years in business). The site's #1 job is **lead generation by phone** make it dead simple for shop owners, factories, homeowners and institutions to see the product range and call/WhatsApp for a quote.
 
 **Target stack:** React + **Gatsby**, deployed on **Netlify**. (If you prefer, Astro is an equally good fit for a static content site and deploys to Netlify identically but the client asked for Gatsby, so default to that.)
 
@@ -144,7 +144,7 @@ Graphite background, `--forge` top border (3px). Columns: logo + one-line blurb 
 **Sections (top→bottom):**
 
 1. **Hero** eyebrow (mono) "Rolling shutter manufacturers · Amroha, U.P."; H1 "All types of rolling shutters, built to last."; one supporting line; two buttons: `☎ Call for a quote` (amber) + `See products` (outline/scroll). Right side: hero image (finished shutter / shopfront). _Desktop:_ text left / image right. _Tablet & mobile:_ stacked, image below text; primary call button full-width on mobile.
-2. **Stat strip** 4 stats: **30+ years experience · 5000+ shutters built · 1000+ happy customers · CNC cutting + moulding**. (Numbers are placeholders see "Open content items".) Row of 4 desktop → row/wrap tablet → 2-up mobile.
+2. **Stat strip** 4 stats: **35+ years experience · 40000+ shutters built · 30000+ happy customers · CNC cutting + moulding**. (Numbers are placeholders see "Open content items".) Row of 4 desktop → row/wrap tablet → 2-up mobile.
 3. **"What we make"** product grid of 6 cards (image, title, short line, "View →" link to detail). **3 columns desktop → 2 columns tablet → 1 column mobile** (mobile shows 3 cards + a "See all products →" button).
 4. **Customer reviews** 3 review cards (5 amber stars, quote, name/area). 3-up desktop → 1–2 up smaller. Pull from Google reviews.
 5. **CTA band** graphite block, centered: "Get a free measurement & quote" + amber phone button.
@@ -171,9 +171,9 @@ Graphite background, `--forge` top border (3px). Columns: logo + one-line blurb 
 
 **Purpose:** Credibility.
 
-- Centered intro: eyebrow "Our story"; H1 "Building shutters in Amroha for 30+ years."; **subtitle "a family business, run across three generations."** (NOTE: the "three generations" line appears **only here**, as a subtitle do not scatter it elsewhere.)
+- Centered intro: eyebrow "Our story"; H1 "Building shutters in Amroha for 35+ years."; **subtitle "a family business, run across three generations."** (NOTE: the "three generations" line appears **only here**, as a subtitle do not scatter it elsewhere.)
 - Story block: workshop/founder photo + paragraph text (2-col desktop, stacked on tablet/mobile).
-- **Stat band:** 30+ years · 5000+ built · 1000+ customers · CNC machinery.
+- **Stat band:** 35+ years · 40000+ built · 30000+ customers · CNC machinery.
 - **"Our machines":** 3 cards (Slat moulding, CNC cutting, Fabrication) with photos. Emphasize state-of-the-art moulding + CNC (a real differentiator).
 - CTA band: "Visit our workshop in Amroha" + call button.
 
@@ -274,7 +274,7 @@ Reviews can be a small JSON array too: `{ stars, quote, name, area }`.
 ## Open content items (placeholders to confirm with client)
 
 - Real phone number(s) and WhatsApp number.
-- Real metrics: years (30+ confirmed), **total shutters built**, **customers served** (5000+/1000+ are placeholders).
+- Real metrics: years (35+ confirmed), **total shutters built**, **customers served** (40000+/30000+ are placeholders).
 - Real product specs per type (width/gauge/motor/finish).
 - Real customer reviews (Google).
 - Photos (see Assets).

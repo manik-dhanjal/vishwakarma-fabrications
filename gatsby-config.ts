@@ -28,7 +28,7 @@ const config: GatsbyConfig = {
     title: "Vishwakarma Rolling Shutters",
     titleTemplate: "%s | Vishwakarma Rolling Shutters",
     description:
-      "Rolling shutter manufacturers in Amroha, U.P. Manual, motorised, perforated & grill shutters, collapsible gates and repair. 35+ years of experience.",
+      "Rolling shutter manufacturers in Amroha, U.P. Manual, motorised, perforated & grill shutters, collapsible gates and repair. 50+ years of experience.",
     siteUrl: "https://vishwakarmafabrications.in",
     locale: "en_IN",
   },

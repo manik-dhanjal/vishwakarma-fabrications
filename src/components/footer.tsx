@@ -25,7 +25,7 @@ export default function Footer() {
             <Logo variant="dark" showSub />
             <p className="text-[#9aa1a8] text-[14px] mt-[14px] max-w-[320px]">
               Rolling shutters and gates custom-built and fitted across Amroha
-              and nearby for 35+ years.
+              and nearby for 50+ years.
             </p>
             <div className="flex items-center gap-[26px] justify-start mt-[18px]">
               <a
@@ -83,7 +83,11 @@ export default function Footer() {
             <h4 className="text-white text-[14px] mt-0 mb-3">Products</h4>
             <div className="flex flex-col gap-2">
               {products.map((p) => (
-                <Link key={p.slug} to={`/products/${p.slug}/`} className={footerLink}>
+                <Link
+                  key={p.slug}
+                  to={`/products/${p.slug}/`}
+                  className={footerLink}
+                >
                   {p.name}
                 </Link>
               ))}

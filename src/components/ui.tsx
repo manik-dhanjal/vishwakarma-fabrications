@@ -102,7 +102,17 @@ export function ProductCard({ product }: { product: Product }) {
       onClick={() => trackProductCardClick(product.name)}
       className="flex flex-col bg-card border border-line rounded-md overflow-hidden no-underline text-inherit shadow-card transition-[transform,box-shadow] duration-150 hover:-translate-y-[3px] hover:shadow-[0_12px_26px_rgba(30,34,39,0.1)]"
     >
-      <Placeholder label={product.category.toLowerCase()} height={120} />
+      {product.images?.[0] ? (
+        <img
+          src={product.images[0]}
+          alt={product.name}
+          height={120}
+          loading="lazy"
+          className="h-[120px] w-full object-cover"
+        />
+      ) : (
+        <Placeholder label={product.category.toLowerCase()} height={120} />
+      )}
       <div className="p-4 flex flex-col gap-2 flex-1">
         <div className="text-[18px] font-bold">{product.name}</div>
         <div className="text-[14px] text-steel">{product.summary}</div>

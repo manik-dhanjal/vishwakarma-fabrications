@@ -16,6 +16,11 @@
       "motorised-remote-shutters",
       "perforated-grill-shutters",
       "collapsible-sliding-gates"
+    ],
+    "images": [
+      "/products/manual-1.jpg",
+      "/products/manual-2.jpg",
+      "/products/manual-3.jpg"
     ]
   },
   {
@@ -40,6 +45,11 @@
       "manual-rolling-shutters",
       "perforated-grill-shutters",
       "collapsible-sliding-gates"
+    ],
+    "images": [
+      "/products/motorised-1.jpg",
+      "/products/motorised-2.jpg",
+      "/products/motorised-3.jpg"
     ]
   },
   {
@@ -59,6 +69,11 @@
       "motorised-remote-shutters",
       "manual-rolling-shutters",
       "collapsible-sliding-gates"
+    ],
+    "images": [
+      "/products/perforated-1.jpg",
+      "/products/perforated-2.jpg",
+      "/products/perforated-3.jpg"
     ]
   },
   {
@@ -83,6 +98,11 @@
       "manual-rolling-shutters",
       "motorised-remote-shutters",
       "perforated-grill-shutters"
+    ],
+    "images": [
+      "/products/gates-1.jpg",
+      "/products/gates-2.jpg",
+      "/products/gates-3.jpg"
     ]
   },
   {
@@ -107,6 +127,11 @@
       "motorised-remote-shutters",
       "manual-rolling-shutters",
       "collapsible-sliding-gates"
+    ],
+    "images": [
+      "/products/repair-1.jpg",
+      "/products/manual-2.jpg",
+      "/products/motorised-3.jpg"
     ]
   }
 ]

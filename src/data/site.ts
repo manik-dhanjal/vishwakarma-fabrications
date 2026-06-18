@@ -42,9 +42,9 @@ const site: SiteData = {
 
   // ---- Stats shown on Home / About (REPLACE with real figures) ----
   stats: [
-    { value: "35+", label: "years experience" },
-    { value: "5000+", label: "shutters built" },
-    { value: "1000+", label: "happy customers" },
+    { value: "50+", label: "years experience" },
+    { value: "40000+", label: "shutters built" },
+    { value: "30000+", label: "happy customers" },
     { value: "CNC", label: "cutting + moulding" },
   ],
 
